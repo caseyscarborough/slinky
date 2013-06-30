@@ -1,7 +1,39 @@
 @import "bootstrap";
 
+html, body {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.hero-unit h1 {
+  font-size: 48px;
+}
+
+#wrapper {
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  /* Negative indent footer by it's height */
+  margin: 0 auto -41px;
+}
+
 .main {
   text-align: center;
+
+  label {
+    text-align: left;
+  }
+
+  #error {
+    text-align: left;
+    color: red;
+
+    ul {
+      list-style: none;
+      margin: 0 0 16px 16px;
+    }
+  }
 }
 
 .navbar-inner .brand {
@@ -10,8 +42,26 @@
 
 .navbar-inner {
   background: #eee;
+  border:none;
+  border-radius:0;
 }
 
 .footer {
-  text-align: center;
+  text-align: right;
+  border-top: 1px solid #eee;
+  width: 100%;
+  color: #666;
+  margin: 0 auto -41px;
+  padding: 10px 0px;
+}
+
+/* FORMS */
+
+input, textarea, select, .uneditable-input {
+  border: 1px solid #bbb;
+  width: 98%;
+}
+
+input {
+  height: auto !important;
 }

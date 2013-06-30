@@ -108,4 +108,12 @@ describe User do
     it { should be_invalid }
   end
 
+  describe "with a lowercase first name" do
+    let(:first_name) { @user.first_name }
+    before { @user.save }
+    it "should be capitalized" do
+      @user.first_name.should == first_name.capitalize
+    end
+  end
+
 end

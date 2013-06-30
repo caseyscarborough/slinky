@@ -3,16 +3,18 @@
 <head>
   <title>Slinky | <%= yield(:title) %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag    "bootstrap-responsive", :media => "all" %>
   <%= javascript_include_tag "application" %>
+  <%= javascript_include_tag "bootstrap.min" %>
   <%= csrf_meta_tags %>
   <%= render 'layouts/shim' %>
 </head>
 <body>
-  <%= render 'layouts/header' %>
-  <%= yield %><br />
-  <div class="container">
-    <%= debug(params) if Rails.env.development? %>
-  </div><br />
+  <div id="wrapper">
+    <%= render 'layouts/header' %>
+    <%= yield %><br />
+    <%= render 'layouts/debug_params' %><br /><br />
+  </div>
   <%= render 'layouts/footer' %>
 </body>
 </html>

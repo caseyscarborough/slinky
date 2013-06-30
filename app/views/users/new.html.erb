@@ -1,9 +1,28 @@
 <% provide(:title, "Signup") %>
+
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="main span10 offset1">
+    <div class="main span6 offset3">
       <h1>Sign Up</h1>
-      <p>Find me in app/views/users/new.html.erb</p>
+      <%= form_for(@user) do |f| %>
+        <%= render 'shared/errors' %>
+        <%= f.label :first_name %>
+        <%= f.text_field :first_name %>
+
+        <%= f.label :last_name %>
+        <%= f.text_field :last_name %>
+
+        <%= f.label :email %>
+        <%= f.text_field :email %>
+
+        <%= f.label :password %>
+        <%= f.password_field :password %>
+
+        <%= f.label :password_confirmation, "Confirmation" %>
+        <%= f.password_field :password_confirmation %>
+
+        <%= f.submit "Create account", class: "btn btn-primary btn-large" %>
+      <% end %>
     </div>
   </div>
 </div>
