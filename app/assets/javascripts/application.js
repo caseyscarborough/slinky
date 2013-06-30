@@ -13,3 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+
+
+$(document).ready(function() {
+    $(".message").hide().fadeIn(500);
+    $(".message").delay(4000).fadeOut(500);
+})
