@@ -9,8 +9,10 @@
 </head>
 <body>
   <%= render 'layouts/header' %>
-  <%= yield %>
+  <%= yield %><br />
+  <div class="container">
+    <%= debug(params) if Rails.env.development? %>
+  </div><br />
   <%= render 'layouts/footer' %>
-  <%= debug(params) if Rails.env.development? %>
 </body>
 </html>

@@ -1,5 +1,6 @@
 Slinky::Application.routes.draw do
   match '/' => "home#index"
+  match '/login' => "session#login"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
