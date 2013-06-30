@@ -1,10 +1,10 @@
 <% provide(:title, 'Welcome') %>
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span10 offset1">
+    <div class="main span10 offset1 hero-unit">
       <h1>Welcome to Slinky!</h1>
       <p>Slinky is a web-application used to create short URLs and to save them for later use.</p>
-      <p>You can begin by <a href="#">signing up</a>!</p>
+      <%= link_to "Sign up now!", signup_path, {:class => 'btn btn-primary btn-large'} %>
     </div>
   </div>
 </div>

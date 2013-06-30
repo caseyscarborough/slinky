@@ -5,16 +5,11 @@ describe "Home Controller" do
   let(:base_title) { "Slinky" }
 
   describe "Index page" do
-
-    it "should have the heading 'Welcome to Slinky!'" do
-      visit '/home/index'
+    subject { page }
+    before { visit root_path }
+    it "should have proper h1 and title" do
       page.should have_selector('h1', :text => 'Welcome to Slinky!')
-    end
-
-    it "should have the title 'Slinky | Welcome'" do
-      visit '/home/index'
       page.should have_title('Slinky | Welcome')
     end
-
   end
 end
