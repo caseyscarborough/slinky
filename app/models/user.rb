@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
     user.email = email.downcase
     user.first_name = first_name.capitalize
     user.last_name = last_name.capitalize
+    create_remember_token
   end
 
   validates :first_name, :presence => true
@@ -23,4 +24,10 @@ class User < ActiveRecord::Base
   def name
     first_name + " " + last_name
   end
+
+  private
+
+    def create_remember_token
+      self.remember_token = SecureRandom.urlsafe_base64
+    end
 end

@@ -27,7 +27,7 @@ describe "User Pages" do
       end
     end
 
-    end    describe "with valid information" do
+    describe "with valid information" do
       before do
         fill_in "First name", with: "Test"
         fill_in "Last name", with: "User"
@@ -39,7 +39,6 @@ describe "User Pages" do
       it "should create a user" do
         expect { click_button submit }.to change(User, :count).by(1)
       end
-
     end
-
+  end
 end
