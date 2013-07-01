@@ -3,21 +3,30 @@ require_relative '../../app/models/user'
 class LinksController < ApplicationController
   before_filter :signed_in_user, only: [:new]
 
+  INVALID_SHORT_LINKS = %w[users login signup
+                         logout links dashboard]
+
   def new
     @link = Link.new
   end
 
   def create
+    if INVALID_SHORT_LINKS.include?(params[:link][:short_url])
+      flash[:error] = "Sorry, that short URL is a reserved word."
+      redirect_to new_link_path
+      return
+    end
     params[:link][:total_clicks] = 0
     params[:link][:long_url] = validate_long_url(params[:link][:long_url])
     @user = User.find_by_remember_token(cookies[:remember_token])
     @link = @user.links.build(params[:link])
-
     if @link.save
       flash[:success] = "Short link successfully created."
       redirect_to user_path(@user)
+      return
     else
       render 'new'
+      return
     end
   end
 

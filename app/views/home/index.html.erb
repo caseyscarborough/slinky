@@ -1,11 +1,27 @@
 <% provide(:title, 'Welcome') %>
-<div class="container">
+<div class="container-fluid">
   <div class="row-fluid">
-    <div class="main span10 offset1 hero-unit">
+    <div class="span1 hidden-phone"></div>
+    <div class="span10 hero-unit main">
       <h1>Welcome to Slinky!</h1><br />
-      <p>Slinky is a web-application used to create short URLs and to save them for later use.</p><br />
+      <p>Slinky is a web-application used to create short URLs and to save them for later use.</p>
+      <p>Convert a long URL into a short URL such as <a href=#">slnky.me/short-url</a></p>
       <%= link_to "Sign up now!", signup_path, {:class => 'btn btn-default btn-large'} %>
     </div>
   </div>
 </div>
-
+<div class="container-fluid">
+  <div class="row-fluid main">
+    <div class="span1 hidden-phone"></div>
+    <div class="span5">
+        <h3>Condense long links</h3>
+        Shortening long links by creating a short URL allows you to
+        remember the link easier, fit the link in a shorter space (such
+        as a Twitter post), and to look nicer.
+    </div><div class="span5">
+        <h3>Keep track of important URLs</h3>
+        Slinky doubles as a place to store important URLs, such as your
+        personal webpage or a frequently downloaded file.
+    </div>
+  </div>
+</div>

@@ -1,7 +1,7 @@
 Slinky::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]
-  resources :links
+  resources :links, only: [:new, :create, :destroy]
 
   root :to => 'home#index'
 
