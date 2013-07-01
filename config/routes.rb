@@ -7,5 +7,6 @@ Slinky::Application.routes.draw do
   match '/login' => "sessions#new"
   match '/logout' => "sessions#destroy"
   match '/signup' => "users#new"
+  match '*a' => "links#check_for_valid_link"
 
 end

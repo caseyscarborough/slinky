@@ -1,0 +1,11 @@
+<tr>
+  <td><%= link_to link.short_url, "/" + link.short_url %></td>
+  <td><%= link.long_url %></td>
+  <td><%= link.total_clicks %></td>
+  <td>
+    <% if !link.last_visited.nil? %>
+    <%= link.last_visited.getlocal.strftime("%b %d, %Y %H:%M") %>
+    <% end %>
+  </td>
+  <%# <td>%><%# link.created_at.getlocal.strftime("%b %d, %Y %H:%M") %><%#</td> %>
+</tr>

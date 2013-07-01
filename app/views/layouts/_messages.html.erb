@@ -1,8 +1,8 @@
 <% if flash.count > 0 %>
-  <div class="row-fluid">
+  <div class="row-fluid message">
     <div class="span10 offset1">
       <% flash.each do |key, value| %>
-        <div class="message alert alert-<%= key %>"><%= value %></div>
+        <div class=" alert alert-<%= key %>"><%= value %></div>
       <% end %>
     </div>
   </div>

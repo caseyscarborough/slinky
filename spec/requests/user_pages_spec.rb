@@ -33,10 +33,25 @@ describe "User Pages" do
 
   describe "profile page" do
     let(:user) { FactoryGirl.create(:user) }
-    before { visit user_path(user) }
+    let!(:link1) { FactoryGirl.create(:link, user: user, short_url: "asdf") }
+    let!(:link2) { FactoryGirl.create(:link, user: user, short_url: "qwer") }
+
+    before do
+      visit login_path
+      fill_in "Email", with: user.email
+      fill_in "Password", with: user.password
+      click_button "Sign in"
+    end
 
     it { should have_content(user.name) }
-    it { should have_title(user.name) }
+    it { should have_title("Slinky | " + user.name) }
+
+    describe "links" do
+      it { should have_link(link1.short_url) }
+      it { should have_link(link2.short_url) }
+      it { should have_content(user.links.count) }
+    end
+
   end
 
   describe "edit page" do
