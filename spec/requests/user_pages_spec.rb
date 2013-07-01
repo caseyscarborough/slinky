@@ -5,21 +5,10 @@ describe "User Pages" do
 
   describe "signup page" do
     before { visit signup_path }
+    let(:submit) { "Create account" }
+
     it { should have_selector('h1', :text => 'Sign Up')}
     it { should have_title('Slinky | Signup')}
-  end
-
-  describe "profile page" do
-    let(:user) { FactoryGirl.create(:user) }
-    before { visit user_path(user) }
-
-    it { should have_selector('h1', :text => user.first_name) }
-    it { should have_title(user.name) }
-  end
-
-  describe "signup page" do
-    before { visit signup_path }
-    let(:submit) { "Create account" }
 
     describe "with invalid information" do
       it "should not create a user" do
@@ -40,5 +29,55 @@ describe "User Pages" do
         expect { click_button submit }.to change(User, :count).by(1)
       end
     end
+  end
+
+  describe "profile page" do
+    let(:user) { FactoryGirl.create(:user) }
+    before { visit user_path(user) }
+
+    it { should have_content(user.name) }
+    it { should have_title(user.name) }
+  end
+
+  describe "edit page" do
+
+    let(:user) { FactoryGirl.create(:user) }
+
+    before do
+      visit login_path
+      fill_in "Email", with: user.email
+      fill_in "Password", with: user.password
+      click_button "Sign in"
+      visit edit_user_path(user)
+    end
+
+    describe "page" do
+      it { should have_selector('h1', text: "Update your profile") }
+      it { should have_title('Slinky | Edit User') }
+      it { should have_link('Change', href: 'http://gravatar.com/emails') }
+    end
+
+    describe "with invalid information" do
+      before { click_button "Save changes" }
+      it { should have_content('error') }
+    end
+
+    describe "with valid information" do
+      before do
+        fill_in "First name", with: "New"
+        fill_in "Last name", with: "Name"
+        fill_in "Email", with: "new@email.com"
+        fill_in "Password", with: user.password
+        fill_in "Confirm password", with: user.password
+        click_button "Save changes"
+      end
+
+      it { should have_title("New Name") }
+      it { should have_link('Logout') }
+      it { should have_selector('div.alert.alert-success') }
+      specify { user.reload.name.should == "New Name" }
+      specify { user.reload.email.should == "new@email.com" }
+    end
+
   end
 end

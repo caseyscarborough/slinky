@@ -2,9 +2,12 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span10 offset1">
-      <h1>Welcome, <%= @user.first_name %>!</h1>
-      <%= gravatar_for @user %>
-      <%= @user.email %>
+      <div style="float:left;padding-right:10px;"><%= gravatar_for @user %></div>
+      <%= @user.name %><br />
+      <%= @user.email %><br />
+      <% if current_user != nil %>
+      <%= link_to "Edit profile", edit_user_path(current_user) %>
+      <% end %>
     </div>
   </div>
 </div>
