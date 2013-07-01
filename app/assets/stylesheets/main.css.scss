@@ -1,13 +1,33 @@
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Lily+Script+One);
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Caption);
+
+$btn-default: #005abf;
 
 html, body {
   height: 100%;
   padding: 0;
   margin: 0;
+  font-family: 'PT Sans Caption', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+  font-family: 'Lily Script One', cursive;
+  font-size: 48px;
 }
 
 .hero-unit h1 {
   font-size: 48px;
+}
+
+a, a:visited {
+  color: $btn-default;
+}
+
+a:hover {
+  text-decoration: none;
+  color: #003597;
 }
 
 #wrapper {
@@ -30,6 +50,7 @@ html, body {
 #error {
   text-align: left;
   color: red;
+  padding-top: 10px;
 
   ul {
     list-style: none;
@@ -38,14 +59,38 @@ html, body {
 }
 
 
-.navbar-inner .brand {
-  margin-left: 7%;
-}
-
 .navbar-inner {
   background: #eee;
   border:none;
+  box-shadow: none;
   border-radius:0;
+  padding:15px 10px;
+  font-family: 'Lily Script One', cursive;
+  font-size: 32px;
+
+  a:hover {
+    color: black;
+  }
+}
+
+.navbar .nav > li > a {
+  color: #333;
+  text-shadow: 0px 1px 3px #aaa;
+  hover {
+    color: black;
+  }
+}
+
+.navbar-inner .brand {
+  margin-left: 7%;
+  font-family: 'Lily Script One', cursive;
+  font-size: 48px;
+  color: #003597;
+  text-shadow: 0px 1px 2px #aaa;
+}
+
+.navbar-inner > .brand > a:hover {
+  color: white;
 }
 
 .footer {
@@ -66,4 +111,32 @@ input, textarea, select, .uneditable-input {
 
 input {
   height: auto !important;
+}
+
+
+/* BUTTONS */
+a.btn.btn-default {
+  color: white;
+}
+.btn-default {
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  background-color: $btn-default;
+  *background-color: $btn-default;
+  background-image: -moz-linear-gradient(top, $btn-default, $btn-default);
+  background-image: -webkit-gradient(linear, 0 0, 0 100%, from($btn-default), to($btn-default));
+  background-image: -webkit-linear-gradient(top, $btn-default, $btn-default);
+  background-image: -o-linear-gradient(top, $btn-default, $btn-default);
+  background-image: linear-gradient(to bottom, $btn-default, $btn-default);
+  background-repeat: repeat-x;
+  border-color: $btn-default $btn-default $btn-default;
+  border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff003597', endColorstr='#ff003597', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled=false);
+}
+
+.btn-default:hover {
+  background: $btn-default;
+  color: #fff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }

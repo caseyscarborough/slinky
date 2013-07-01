@@ -1,0 +1,20 @@
+<% provide(:title, "New Link") %>
+
+<div class="container-fluid">
+  <%= render 'users/user_header' %>
+  <div class="row-fluid">
+    <div class="main span4 offset4">
+      <h1>New Link</h1>
+      <%= form_for(@link) do |f| %>
+        <%= render 'links/link_errors' %>
+        <%= f.label :short_url %>
+        <%= f.text_field :short_url %>
+
+        <%= f.label :long_url %>
+        <%= f.text_field :long_url, :value => "http://"  %>
+
+        <%= f.submit "Create Link", class: "btn btn-large btn-default" %>
+      <% end %>
+    </div>
+  </div>
+</div>

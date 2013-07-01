@@ -19,4 +19,6 @@
 $(document).ready(function() {
     $(".message").hide().fadeIn(500);
     $(".message").delay(4000).fadeOut(500);
+    $(".alert").hide().fadeIn(500);
+    $(".alert").delay(4000).fadeOut(500);
 })

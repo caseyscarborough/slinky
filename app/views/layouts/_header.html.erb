@@ -7,11 +7,8 @@
     </a>
     <a class="brand" href="/">Slinky</a>
     <div class="nav-collapse">
-      <ul class="nav">
-        <li>&nbsp;</li>
-        <li><%= link_to "Home", '/' %></li>
-      </ul>
       <ul class="nav pull-right">
+        <li><%= link_to "Home", '/' %></li>
         <% if signed_in? %>
           <li><%= link_to "Logout", logout_path%></li>
         <% else %>

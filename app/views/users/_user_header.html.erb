@@ -1,0 +1,10 @@
+<div class="row-fluid">
+  <div class="span10 offset1">
+    <div style="float:left;padding-right:10px;"><%= gravatar_for current_user %></div>
+    <%= current_user.name %><br />
+    <%= current_user.email %><br />
+    <% if current_user != nil %>
+      <%= link_to "Edit profile", edit_user_path(current_user) %>
+    <% end %>
+  </div>
+</div>
