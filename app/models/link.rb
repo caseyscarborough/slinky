@@ -3,7 +3,7 @@ class Link < ActiveRecord::Base
                   :total_clicks
   belongs_to :user
 
-  SHORT_URL_REGEX = /[a-zA-Z0-9-_]{1,20}/
+  SHORT_URL_REGEX = /[a-zA-Z0-9\-_]{1,20}/
 
   validates :user_id, presence: true
   validates :short_url, presence: true, length: { maximum: 20 }, uniqueness: true

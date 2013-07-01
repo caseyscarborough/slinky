@@ -100,13 +100,28 @@ a:hover {
 
 /* FORMS */
 
-input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
-  width: 98%;
-}
+
 
 input {
   height: auto !important;
+}
+
+div .field_with_errors {
+  display: inherit;
+  width: inherit;
+}
+
+.form-horizontal {
+  margin: 0 auto;
+  max-width: 450px;
+
+  .controls {
+    margin-left: 110px;
+  }
+
+  .control-label {
+    width: 100px;
+  }
 }
 
 
@@ -142,6 +157,13 @@ a.btn.btn-default {
 @media (max-width: 767px) {
   .navbar .brand {
     margin-left: 0px;
+  }
+}
+
+@media (max-width: 480px ) {
+  .form-horizontal label.control-label {
+    text-align: left;
+    float: left;
   }
 }
 

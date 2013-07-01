@@ -1,19 +1,30 @@
 <% provide(:title, 'Login') %>
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="main span4 offset4">
-      <h1>Login</h1>
-      <%= form_for(:session, url: sessions_path) do |f| %>
-
-        <%= f.label :email %>
-        <%= f.text_field :email %>
-
-        <%= f.label :password %>
-        <%= f.password_field :password %>
-
+    <div class="span4 hidden-phone"></div>
+    <div class="main span4">
+      <h1>Login</h1><br />
+      <%= form_for :session, :html => { :class => "form-horizontal" }, url: sessions_path do |f| %>
+        <div class="control-group">
+          <%= f.label :email, :class => "control-label" %>
+          <div class="controls">
+            <div class="input-prepend">
+              <span class="add-on"><i class="icon-user"></i></span>
+              <%= f.text_field :email, :placeholder => "Email Address" %>
+            </div>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.label :password, "Password", :class => "control-label" %>
+          <div class="controls">
+            <div class="input-prepend">
+              <span class="add-on"><i class="icon-lock"></i></span>
+              <%= f.password_field :password, :placeholder => "Password" %>
+            </div>
+          </div>
+        </div>
         <%= f.submit "Sign in", class: "btn btn-large btn-default" %>
-      <% end %>
-
+      <% end %><br />
       <p>Need an account? Click <%= link_to "here", signup_path %> to sign up!</p>
     </div>
   </div>

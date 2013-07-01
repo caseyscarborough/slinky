@@ -2,28 +2,63 @@
 
 <div class="container-fluid">
 <div class="row-fluid">
-  <div class="span6 offset3">
-    <h1>Update your profile</h1><br />
-    <%= form_for(@user) do |f| %>
+  <div class="span3 hidden-phone"></div>
+  <div class="span6 main">
+    <h1 style="line-height: 60px;">Update your profile</h1><br />
+    <%= form_for @user, :html => { :class => "form-horizontal" } do |f| %>
       <%= render 'shared/errors' %>
 
-      <%= f.label :first_name %>
-      <%= f.text_field :first_name %>
+      <div class="control-group">
+        <%= f.label :first_name, :class => "control-label" %>
+        <div class="controls">
+          <div class="input-prepend">
+            <span class="add-on"><i class="icon-user"></i></span>
+            <%= f.text_field :first_name, :placeholder => "First Name" %>
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :last_name, :class => "control-label" %>
+        <div class="controls">
+          <div class="input-prepend">
+            <span class="add-on"><i class="icon-user"></i></span>
+            <%= f.text_field :last_name, :placeholder => "Last Name" %>
+          </div>
+        </div>
+      </div>
 
-      <%= f.label :last_name %>
-      <%= f.text_field :last_name %>
+      <div class="control-group">
+        <%= f.label :email, :class => "control-label" %>
+        <div class="controls">
+          <div class="input-prepend">
+            <span class="add-on"><i class="icon-envelope"></i></span>
+            <%= f.text_field :email, :placeholder => "Email" %>
+          </div>
+        </div>
+      </div>
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+      <div class="control-group">
+        <%= f.label :password, :class => "control-label" %>
+        <div class="controls">
+          <div class="input-prepend">
+            <span class="add-on"><i class="icon-lock"></i></span>
+            <%= f.password_field :password, :placeholder => "Password" %>
+          </div>
+        </div>
+      </div>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.label :password_confirmation, "Confirm password" %>
-      <%= f.password_field :password_confirmation %>
+      <div class="control-group">
+        <%= f.label :password_confirmation, "Confirmation", :class => "control-label" %>
+        <div class="controls">
+          <div class="input-prepend">
+            <span class="add-on"><i class="icon-lock"></i></span>
+            <%= f.password_field :password_confirmation, :placeholder => "Re-Enter Password" %>
+          </div>
+        </div>
+      </div>
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
-    <% end %>
+    <% end %><br />
 
     <%= gravatar_for @user %>
     <a href="http://gravatar.com/emails">Change</a>
