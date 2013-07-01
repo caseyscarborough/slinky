@@ -1,8 +1,10 @@
 <div class="container-fluid">
-  <div style="text-align: center;">
-    <small>
-    Development Environment - Parameters
-    </small>
-  </div>
-  <%= debug(params) if Rails.env.development? %>
+  <% if Rails.env.development? %>
+    <div style="text-align: center;">
+      <small>
+        Development Environment - Parameters
+      </small>
+    </div>
+    <%= debug(params)%>
+  <% end %>
 </div>
