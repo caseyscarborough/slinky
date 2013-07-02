@@ -2,10 +2,26 @@
 
 $btn-default: #005abf;
 
-html, body {
+html {
+  height: 100%;
+  background: rgb(255,255,255); /* Old browsers */
+  background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(234,234,234,1) 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(100%,rgba(234,234,234,1))); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(234,234,234,1) 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(234,234,234,1) 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(234,234,234,1) 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(234,234,234,1) 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
+}
+
+body {
+  background: none;
   height: 100%;
   font-family: 'PT Sans Caption', sans-serif;
   -webkit-font-smoothing: antialiased;
+}
+
+body {
 }
 
 h1 {
@@ -64,6 +80,7 @@ a:hover {
   font-family: 'Lily Script One', cursive;
   font-size: 32px;
 
+  border-bottom: 3px solid $btn-default;
   a:hover {
     color: black;
   }
@@ -94,8 +111,8 @@ a:hover {
   border-top: 1px solid #999;
   width: 100%;
   color: #333;
-  margin: 0 auto -41px;
-  padding: 10px 0px;
+  margin: 0 auto -41px -20px;
+  padding: 10px 20px;
 }
 
 /* FORMS */
@@ -125,14 +142,14 @@ div .field_with_errors {
 
   div.control-group {
     padding: 0;
-    margin-bottom: 25px;
+    margin-bottom: 30px;
   }
 }
 
 label.error {
   color: #910000;
   font-size: 12px;
-  margin-bottom: -25px;
+  margin-bottom: -30px;
   padding-bottom: 0;
 }
 
@@ -166,19 +183,51 @@ a.btn.btn-default {
 }
 
 
+/* Media Queries */
 
 @media (max-width: 767px) {
   .navbar .brand {
     margin-left: 0px;
   }
+
+  .navbar {
+    width: 100%;
+  }
+  div.navbar-inner {
+    width: 100%;
+    margin-left: -20px;
+    padding: 15px 20px;
+    margin-right: -10px;
+  }
 }
 
 @media (max-width: 480px ) {
-  .form-horizontal label.control-label {
-    text-align: left;
-    float: left;
+  .form-horizontal {
+
+    text-align: center;
+
+    .control-group {
+      width: auto;
+    }
+
+    label.error {
+      margin-bottom: -20px;
+    }
+
+    .control-group label.control-label {
+      text-align: center;
+      width: 100px;
+      padding: 0px;
+      margin: 0px auto;
+    }
+  }
+
+  .form-horizontal .control-group {
+    width: 100%;
+    text-align: center;
   }
 }
 
 
 @import "bootstrap-responsive";
+
