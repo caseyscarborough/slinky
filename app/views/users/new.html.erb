@@ -15,7 +15,7 @@
             <div class="input-prepend">
               <span class="add-on"><i class="icon-user"></i></span>
               <%= f.text_field :first_name, :placeholder => "First Name",
-                    :type => "text", :required => true, :novalidate => "true" %>
+                    :type => "text" %>
             </div>
           </div>
         </div>
@@ -25,7 +25,7 @@
             <div class="input-prepend">
               <span class="add-on"><i class="icon-user"></i></span>
               <%= f.text_field :last_name, :placeholder => "Last Name",
-                    :type => "text", :required => true, :novalidate => "true" %>
+                    :type => "text" %>
             </div>
           </div>
         </div>
@@ -36,7 +36,7 @@
             <div class="input-prepend">
               <span class="add-on"><i class="icon-envelope"></i></span>
               <%= f.text_field :email, :placeholder => "Email",
-                    :type => "email", :required => true, :novalidate => "true" %>
+                    :type => "email" %>
             </div>
           </div>
         </div>
@@ -47,7 +47,7 @@
             <div class="input-prepend">
               <span class="add-on"><i class="icon-lock"></i></span>
               <%= f.password_field :password, :placeholder => "Password",
-                    :min => 6, :required => true, :novalidate => "true" %>
+                    :min => 6 %>
             </div>
           </div>
         </div>
@@ -58,7 +58,7 @@
             <div class="input-prepend">
               <span class="add-on"><i class="icon-lock"></i></span>
               <%= f.password_field :password_confirmation, :placeholder => "Re-Enter Password",
-                    :min => 6, :required => true, :novalidate => "true" %>
+                    :min => 6 %>
             </div>
           </div>
         </div>
@@ -77,18 +77,5 @@
 </div>
 
 <script>
-  $('#new_user_form').validate({
-    rules: {
-      "user[password_confirmation]": {
-        equalTo: "#user_password",
-        minlength: 6
-      }
-    },
-    messages: {
-      "user[password_confirmation]": {
-        equalTo: "Passwords must match.",
-        minlength: "Password must be at least 6 characters."
-      }
-    }
-  });
+
 </script>

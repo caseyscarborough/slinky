@@ -1,7 +1,7 @@
 <tr>
   <td><%= link_to link.short_url, "/" + link.short_url %></td>
-  <td><%= link.long_url %></td>
-  <td><%= link.total_clicks %></td>
+  <td><%= link.long_url.gsub(/http[s]?:\/\//, "").truncate(25) %></td>
+  <td style="text-align: center;"><%= link.total_clicks %></td>
   <td>
     <% if !link.last_visited.nil? %>
     <%= link.last_visited.getlocal.strftime("%b %d, %Y %H:%M") %>
