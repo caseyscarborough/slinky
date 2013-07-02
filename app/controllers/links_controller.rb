@@ -12,14 +12,9 @@ class LinksController < ApplicationController
 
   def create
     if params[:link][:short_url] == ""
-      puts "FUCK YES"
-      puts generate_short_link
       params[:link][:short_url] = generate_short_link
-      puts params[:short_url]
-    else
-      puts "FAILURE"
     end
-    generate_short_link
+
     if reserved_word?(params[:link][:short_url])
       flash[:error] = "Sorry, that short URL is a reserved word."
       redirect_to new_link_path

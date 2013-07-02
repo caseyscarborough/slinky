@@ -19,15 +19,17 @@ describe "Link Pages" do
 
     describe "with invalid information" do
 
-      before { click_button "Create Link" }
-      it { should have_selector('div#error') }
+      before { fill_in "Short URL", with: "^%$#" }
 
+      it "should not create a new short link" do
+        expect { click_button "Create Link" }.to change(Link, :count).by(0)
+      end
     end
 
     describe "with valid information" do
       before do
-        fill_in "Short url", with: "short-url"
-        fill_in "Long url", with: "www.google.com"
+        fill_in "Short URL", with: "short-url"
+        fill_in "Long URL", with: "www.google.com"
       end
 
       it "should create a new short link" do

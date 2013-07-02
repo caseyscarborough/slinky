@@ -4,6 +4,7 @@
   <div class="row-fluid">
     <div class="span8 offset2">
       <h3>Short Links &nbsp;&nbsp;<%= link_to "New", new_link_path %></h3>
+      <div id="links-table">
       <% if @user.links.any? %>
         <table class="table table-hover table-striped table-condensed links">
           <tr>
@@ -20,6 +21,7 @@
       <% else %>
         <p>You haven't created any links yet.</p>
       <% end %>
+      </div>
     </div>
   </div>
 </div>
