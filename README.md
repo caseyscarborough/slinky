@@ -2,6 +2,8 @@
 
 Slinky is a URL Shortener web application written using Ruby 2.0 and Rails 3.2. It is currently in the beginning stages of development.
 
+The application can be used and seen at [www.slnky.me](http://www.slnky.me).
+
 
 ## Using the application
 
@@ -19,10 +21,10 @@ Afterwards, navigate to [http://localhost:3000](http://localhost:3000) in your w
 
 ## To-Do
 
-* Add creation and deletion of short-links.
-* Completely change styling.
+* Add deletion of short-links.
 * Create logo.
 * Add more features.
+* Mask URL when viewing user dashboard (hiding user ID).
 
 
 ## Contributing
