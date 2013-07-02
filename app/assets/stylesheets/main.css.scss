@@ -122,7 +122,20 @@ div .field_with_errors {
   .control-label {
     width: 100px;
   }
+
+  div.control-group {
+    padding: 0;
+    margin-bottom: 25px;
+  }
 }
+
+label.error {
+  color: #910000;
+  font-size: 12px;
+  margin-bottom: -25px;
+  padding-bottom: 0;
+}
+
 
 
 /* BUTTONS */
