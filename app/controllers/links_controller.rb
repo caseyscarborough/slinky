@@ -44,6 +44,17 @@ class LinksController < ApplicationController
 
   end
 
+  def destroy
+    link = Link.find(params[:id])
+    if (link.user == current_user)
+      link.destroy
+      # Don't render anything since this should be an AJAX call.
+      render :nothing => true
+    else
+      redirect_to root_path
+    end
+  end
+
   private
 
     def signed_in_user

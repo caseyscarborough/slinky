@@ -51,4 +51,10 @@ $(document).ready(function() {
             }
         }
     });
-})
+
+    $('.trash').click(function() {
+        $.post(this.href, { _method: "delete" }, null, "script");
+        $(this).closest('tr').fadeOut(300);
+        return false;
+    });
+});
