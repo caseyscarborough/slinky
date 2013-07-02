@@ -11,7 +11,16 @@ class LinksController < ApplicationController
   end
 
   def create
-    if INVALID_SHORT_LINKS.include?(params[:link][:short_url])
+    if params[:link][:short_url] == ""
+      puts "FUCK YES"
+      puts generate_short_link
+      params[:link][:short_url] = generate_short_link
+      puts params[:short_url]
+    else
+      puts "FAILURE"
+    end
+    generate_short_link
+    if reserved_word?(params[:link][:short_url])
       flash[:error] = "Sorry, that short URL is a reserved word."
       redirect_to new_link_path
       return
@@ -21,7 +30,7 @@ class LinksController < ApplicationController
     @user = User.find_by_remember_token(cookies[:remember_token])
     @link = @user.links.build(params[:link])
     if @link.save
-      flash[:success] = "Short link successfully created."
+      flash[:success] = "Short link slnky.me/#{@link.short_url} successfully created."
       redirect_to user_path(@user)
       return
     else
@@ -68,6 +77,25 @@ class LinksController < ApplicationController
       else
         "http://" + long_url
       end
+    end
+
+    def generate_short_link
+      short_url = nil
+      loop do
+        rand_char =  [('a'..'z'),('A'..'Z'),(0..9)].map{|i| i.to_a}.flatten
+        short_url = (0...7).map{ rand_char[rand(rand_char.length)] }.join
+        break if !short_url_exists?(short_url)
+      end
+      short_url
+    end
+
+    def reserved_word?(short_url)
+      INVALID_SHORT_LINKS.include?(short_url)
+    end
+
+    def short_url_exists?(short_url)
+      link = Link.find_by_short_url(short_url)
+      link
     end
 
 end

@@ -9,15 +9,21 @@
       Use this page to create your new link.<br />
       Short link cannot contain special characters.<br /><br />
       <%= render 'links/link_errors' %>
-      <%= form_for @link, :html => { :class => "form-horizontal" } do |f| %>
+      <%= form_for @link, :html => { :class => "form-horizontal",
+                                     :name => "new_link_form",
+                                     :id => "new_link_form" } do |f| %>
         <div class="control-group">
           <%= f.label :short_url, "Short URL", :class => "control-label" %>
           <div class="controls">
             <div class="input-prepend">
               <span class="add-on"><i class="icon-star"></i></span>
-              <%= f.text_field :short_url, :placeholder => "e.g. 'random' or 'short-link'" %>
-            </div>
+              <%= f.text_field :short_url, :placeholder => "e.g. 'random' or 'short-link'",
+                               "data-toggle" => "tooltip", "data-placement" => "right",
+                               :title => "Leave this field blank for an auto-generated URL." %>
+            </div><br />
+            <noscript id="enable-your-javascript"><small style="color:green">Leave blank for an auto-generated URL.</small></noscript>
           </div>
+
         </div>
         <div class="control-group">
           <%= f.label :long_url, "Long URL", :class => "control-label" %>
@@ -34,3 +40,10 @@
     </div>
   </div>
 </div>
+
+<script>
+  $('#link_short_url').focus(function() {
+    $('#link_short_url').tooltip('show');
+  });
+  $('#enable-your-javascript').hide();
+</script>

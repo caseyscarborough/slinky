@@ -57,4 +57,12 @@ $(document).ready(function() {
         $(this).closest('tr').fadeOut(300);
         return false;
     });
+
+    $('#new_link_form').validate({
+        rules: {
+            "link[long_url]": {
+                required: true
+            }
+        }
+    });
 });
