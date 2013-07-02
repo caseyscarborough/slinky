@@ -52,7 +52,7 @@ class LinksController < ApplicationController
     end
 
     def validate_long_url(long_url)
-      if long_url.start_with?("http://" || "https://")
+      if (long_url.start_with?("http://") || long_url.start_with?("https://"))
         long_url
       else
         "http://" + long_url

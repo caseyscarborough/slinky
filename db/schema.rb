@@ -11,16 +11,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130701003355) do
+ActiveRecord::Schema.define(:version => 20130702034216) do
 
   create_table "links", :force => true do |t|
     t.string   "short_url"
-    t.string   "long_url"
+    t.text     "long_url",     :limit => 255
     t.integer  "user_id"
     t.integer  "total_clicks"
     t.datetime "last_visited"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.datetime "created_at",                  :null => false
+    t.datetime "updated_at",                  :null => false
   end
 
   add_index "links", ["user_id", "short_url"], :name => "index_links_on_user_id_and_short_url"
