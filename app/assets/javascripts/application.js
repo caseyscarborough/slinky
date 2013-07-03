@@ -16,9 +16,7 @@
 //= require jquery.validate
 
 
-
 $(document).ready(function() {
-
     $.validator.addMethod(
         "domain",
         function(value, element) {
@@ -27,6 +25,41 @@ $(document).ready(function() {
         },
         "Your short URL cannot point to this site."
     );
+
+    $('#try-button').click(function(event, data) {
+        var url = $('#try-input').val();
+        if (url != '' && isValidURL(url) && !startsWithSlinky(url)) {
+            if($('#try-input'))
+            $.ajax({
+                type:"post",
+                data: { "link[long_url]": $('#try-input').val() },
+                url: "/links",
+                dataType: 'json',
+                error: function(request, error) {
+                    console.log(arguments);
+                    alert("Something is messed up");
+                },
+                success: function(data) {
+                    $('#message').html(
+                        "<h3>Success! View your short link below:</h3>" +
+                            "<a href='http://slnky.me/" + data.short_url +
+                            "'><h3>slnky.me/" + data.short_url + "</h3></a>"
+                    );
+                    $('#message').fadeIn(400);
+                    //$('#try-input').val('slnky.me/' + data.short_url);
+                }
+            });
+        } else {
+            $('#message').html(
+                "<h3>Oops, something's wrong with that URL.</h3>" +
+                "<small>If you think this is incorrect, please let us know.</small>"
+             );
+            $('#message').fadeIn(400);
+        }
+
+    });
+
+
 
     $(".message").hide().fadeIn(500);
     $(".message").delay(4000).fadeOut(500);
@@ -77,3 +110,22 @@ $(document).ready(function() {
         }
     });
 });
+
+function startsWithSlinky(url) {
+    var index = url.indexOf("slnky.me");
+    return (index != null && index >= 0 && index <= 13);
+}
+
+function isValidURL(str) {
+    var pattern = new RegExp('^(https?:\\/\\/)?'+ // protocol
+        '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+        '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+        '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+        '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+        '(\\#[-a-z\\d_]*)?$','i'); // fragment locator
+    if(!pattern.test(str)) {
+        return false;
+    } else {
+        return true;
+    }
+}

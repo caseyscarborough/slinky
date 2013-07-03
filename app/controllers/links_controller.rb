@@ -6,11 +6,29 @@ class LinksController < ApplicationController
   INVALID_SHORT_LINKS = %w[users login signup
                          logout links dashboard]
 
+  respond_to :json
+
   def new
     @link = Link.new
   end
 
   def create
+    from_url = request.referrer.to_s
+    params[:link][:total_clicks] = 0
+    params[:link][:long_url] = validate_long_url(params[:link][:long_url])
+
+    if from_url.end_with?("localhost:3000/") || from_url.end_with?("slnky.me/")
+      # UGH hackish and terrible. Will fix in near future.
+      params[:link][:short_url] = generate_short_link
+      @link = Link.new(params[:link])
+      @link.total_clicks = 0
+      @link.save(:validate => false)
+      short_url = "slnky.me/" + @link.short_url
+      puts short_url
+      respond_with @link
+      return
+    end
+
     if params[:link][:short_url] == ""
       params[:link][:short_url] = generate_short_link
     end
@@ -20,8 +38,7 @@ class LinksController < ApplicationController
       redirect_to new_link_path
       return
     end
-    params[:link][:total_clicks] = 0
-    params[:link][:long_url] = validate_long_url(params[:link][:long_url])
+
     @user = User.find_by_remember_token(cookies[:remember_token])
     @link = @user.links.build(params[:link])
     if @link.save
