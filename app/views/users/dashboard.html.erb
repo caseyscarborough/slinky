@@ -1,8 +1,8 @@
 <% provide(:title, "Dashboard") %>
 <div class="container-fluid">
-  <%= render 'users/user_header' %>
   <div class="row-fluid">
-    <div class="span8 offset2">
+    <div class="span1 hidden-phone"></div>
+    <div class="span7">
       <h3>Short Links &nbsp;&nbsp;<%= link_to "New", new_link_path %></h3>
       <div id="links-table">
         <% if @user.links.any? %>
@@ -11,17 +11,20 @@
               <th></th>
               <th>Short URL</th>
               <th>Long URL</th>
-              <th style="text-align: center;">Total Clicks</th>
-              <th>Last Visited</th>
+              <th style="text-align: center;">Clicks</th>
+              <th class="hidden-phone">Last Visited</th>
               <%# <th>Date Created</th> %>
             </tr>
             <%= render @links %>
           </table>
-          <span style="text-align: center"><%= will_paginate @links %></span>
+          <%= will_paginate @links %>
         <% else %>
           <p>You haven't created any links yet.</p>
         <% end %>
       </div>
+    </div>
+    <div class="span3">
+      <%= render 'users/sidebar' %>
     </div>
   </div>
 </div>

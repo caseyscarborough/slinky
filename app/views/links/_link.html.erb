@@ -3,9 +3,9 @@
   <td><%= link_to link.short_url, "/" + link.short_url, :target => "_blank" %></td>
   <td><%= link.long_url.gsub(/http[s]?:\/\//, "").truncate(25) %></td>
   <td style="text-align: center;"><%= link.total_clicks %></td>
-  <td>
+  <td class="hidden-phone">
     <% if !link.last_visited.nil? %>
-    <%= link.last_visited.getlocal.strftime("%b %d, %Y %H:%M") %>
+    <%= link.last_visited.getlocal.strftime("%b %e, %Y") %>
     <% end %>
   </td>
   <%# <td>%><%# link.created_at.getlocal.strftime("%b %d, %Y %H:%M") %><%#</td> %>

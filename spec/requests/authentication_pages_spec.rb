@@ -59,7 +59,7 @@ describe "Authentication" do
           end
 
           describe "after signing in" do
-            it { should have_title('Slinky | Edit User') }
+            it { should have_title('Slinky | Dashboard') }
           end
         end
 

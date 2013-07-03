@@ -42,18 +42,21 @@ $(document).ready(function() {
                 },
                 success: function(data) {
                     $('#message').html(
-                        "<h3>Success! View your short link below:</h3>" +
-                            "<a id ='slnky-link' href='http://slnky.me/" + data.short_url +
+                        "<h3>Success! View your short link below:</h3><br />" +
+                            "<a id ='slnky-link' href='/" + data.short_url +
                             "' target='_blank'><h3 id='slnky-link-text'>slnky.me/" +
                             data.short_url + "</h3></a>" +
-                            "<button id='clipboard-button' data-clipboard-text='http://slnky.me/" + data.short_url +
-                            "' class='btn btn-large btn-default'>Copy to Clipboard</button>"
+                            "<button id='clipboard-button' data-clipboard-text='slnky.me/" + data.short_url +
+                            "' class='btn btn-large btn-default'>Copy to Clipboard</button>" +
+                            "&nbsp;&nbsp;<img id='checkmark' src='/assets/checkmark.png' height='30' width='30'>"
                     );
                     $('#message').fadeIn(400);
                     ZeroClipboard.setDefaults( { moviePath: '/lib/ZeroClipboard.swf' } );
                     var clip = new ZeroClipboard($('#clipboard-button'));
                     clip.on('complete', function(client, args) {
-                        alert('Link copied to clipboard: ' + args.text);
+                        //alert("Link copied to clipboard:\n" + args.text);
+                        $('#checkmark').fadeIn(300);
+                        $('#checkmark').delay(2000).fadeOut(300);
                     });
                 }
             });

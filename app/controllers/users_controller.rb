@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :signed_in_user, only: [:show, :edit, :update]
+  before_filter :signed_in_user, only: [:show, :dashboard, :edit, :update]
   before_filter :correct_user, only: [:show, :edit, :update]
 
   def new
@@ -45,7 +45,7 @@ class UsersController < ApplicationController
 
     def signed_in_user
       store_location
-      redirect_to login_url, notice: "Please login first." unless signed_in?
+      redirect_to login_path, notice: "Please login first." unless signed_in?
     end
 
     def correct_user

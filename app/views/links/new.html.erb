@@ -1,10 +1,10 @@
 <% provide(:title, "New Link") %>
 
-<div class="container">
-  <%= render 'users/user_header' %>
+<div class="container-fluid">
   <div class="row-fluid">
-    <div class="span3 hidden-phone"></div>
-    <div class="main span6">
+    <div class="span1 hidden-phone"></div>
+    <div class="main span7">
+      <br />
       <h1>New Link</h1>
       Use this page to create your new link.<br />
       Short link cannot contain special characters.<br /><br />
@@ -36,7 +36,9 @@
         </div>
         <%= f.submit "Create Link", class: "btn btn-large btn-default" %>
       <% end %>
-
+    </div>
+    <div class="span3">
+      <%= render 'users/sidebar' %>
     </div>
   </div>
 </div>

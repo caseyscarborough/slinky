@@ -2,6 +2,12 @@
 
 $btn-default: #005abf;
 
+
+h1, h2, h3, h4, h5 {
+  padding: 0px;
+  margin: 0 0 10px;
+}
+
 html {
   height: 100%;
 }
@@ -9,8 +15,8 @@ html {
 body {
   background: #f9f9f9 repeat;
   height: 100%;
-  font-family: 'PT Sans Caption', sans-serif;
-  -webkit-font-smoothing: antialiased;
+  font-family: 'Lato', sans-serif;
+  font-size: 16px;
 }
 
 h1 {
@@ -18,8 +24,13 @@ h1 {
   font-size: 48px;
 }
 
+h3 {
+  font-size: 24px;
+  line-height: 24px;
+}
+
 .hero-unit h1 {
-  font-size: 48px;
+  font-size: 60px;
 }
 
 a, a:visited {
@@ -64,6 +75,12 @@ a:hover {
   font-size: 26px;
 }
 
+#checkmark {
+  display: none;
+  position: absolute;
+  padding: 5px;
+}
+
 #error {
   text-align: left;
   color: red;
@@ -77,17 +94,17 @@ a:hover {
 
 
 .navbar-inner {
-  background: #eee;
+  background: #f9f9f9;
   border:none;
   box-shadow: none;
   border-radius:0;
   padding:15px 10px;
-  font-family: 'Lily Script One', cursive;
-  font-size: 32px;
+  font-size: 16px;
 
-  border-bottom: 3px solid $btn-default;
+  /*border-bottom: 3px solid $btn-default;*/
   a:hover {
     color: black;
+    background: #f9f9f9;
   }
 }
 
@@ -98,6 +115,20 @@ a:hover {
     color: black;
   }
 }
+.navbar .nav li.dropdown.open > .dropdown-toggle,
+.navbar .nav li.dropdown.active > .dropdown-toggle,
+.navbar .nav li.dropdown.open.active > .dropdown-toggle {
+  background-color: #f9f9f9;
+  color: #333;
+}
+
+.dropdown-menu {
+  min-width: 10px;
+  padding: 5px 0px;
+  margin: 0;
+  list-style: none;
+  text-align: left;
+}
 
 .navbar-inner .brand {
   margin-left: 7%;
@@ -105,10 +136,25 @@ a:hover {
   font-size: 48px;
   color: #005abf;
   text-shadow: 0px 1px 2px #aaa;
+  sup {
+    font-size: 30px;
+    padding-left: 5px;
+  }
 }
 
 .navbar-inner > .brand > a:hover {
   color: white;
+}
+
+.sidebar {
+  background: #eee;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -o-border-radius: 10px;
+  padding: 15px;
+  overflow: visible;
+  margin-top: 20px;
 }
 
 .footer {
@@ -154,8 +200,13 @@ div .field_with_errors {
 label.error {
   color: #910000;
   font-size: 12px;
-  margin-bottom: -30px;
+  margin-bottom: -25px;
   padding-bottom: 0;
+}
+
+.pagination {
+  margin: 0 auto;
+  text-align: center;
 }
 
 

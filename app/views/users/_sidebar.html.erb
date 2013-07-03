@@ -1,0 +1,29 @@
+<% @user = current_user %>
+<br />
+<div class="overflow:visible">
+  <div style="float:left;padding-right:10px;"><%= gravatar_for @user, '80', 'img-polaroid' %></div>
+  <h4><%= @user.name %></h4>
+  <%= @user.email %><br />
+  <% if @user != nil %>
+    <%= link_to "Edit Profile", edit_user_path(@user) %>
+  <% end %>
+</div>
+<div style="clear:both"></div>
+<div class='sidebar'>
+  <h3>User Stats</h3>
+  <table>
+    <tr>
+      <td>Registered:</td>
+      <td><%= @user.created_at.strftime("%b %e, %Y") %></td>
+    </tr>
+    <tr>
+      <td>Total Links:</td>
+      <td><%= @user.links.count %></td>
+    </tr>
+    <tr>
+      <td>Total Clicks:</td>
+      <td><%= total_clicks(@user) %></td>
+    </tr>
+  </table>
+</div>
+<br /><br />
