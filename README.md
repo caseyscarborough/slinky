@@ -22,7 +22,6 @@ Afterwards, navigate to [http://localhost:3000](http://localhost:3000) in your w
 ## To-Do
 
 * Add link editing.
-* Implement link creation on homepage without user account.
 * Create logo.
 * Add more features.
 
