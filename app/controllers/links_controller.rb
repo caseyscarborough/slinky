@@ -26,7 +26,7 @@ class LinksController < ApplicationController
     @link = @user.links.build(params[:link])
     if @link.save
       flash[:success] = "Short link slnky.me/#{@link.short_url} successfully created."
-      redirect_to user_path(@user)
+      redirect_to dashboard_path
       return
     else
       render 'new'

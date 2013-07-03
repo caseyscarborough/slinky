@@ -7,7 +7,11 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
+    redirect_to dashboard_path
+  end
+
+  def dashboard
+    @user = current_user
     @links = @user.links.paginate(page: params[:page], per_page: 15)
   end
 
@@ -16,7 +20,7 @@ class UsersController < ApplicationController
     if @user.save
       sign_in @user
       flash[:success] = "Account successfully created!"
-      redirect_to @user
+      redirect_to dashboard_path
     else
       render 'new'
     end
@@ -31,7 +35,7 @@ class UsersController < ApplicationController
     if @user.update_attributes(params[:user])
       flash[:success] = "Profile successfully updated."
       sign_in @user
-      redirect_to @user
+      redirect_to dashboard_path
     else
       render 'edit'
     end
@@ -48,7 +52,7 @@ class UsersController < ApplicationController
       begin
         @user = User.find(params[:id])
       rescue
-        redirect_to user_path(current_user)
+        redirect_to dashboard_path
         return
       end
       redirect_to(root_path) unless current_user?(@user)

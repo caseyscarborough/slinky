@@ -44,7 +44,7 @@ describe "User Pages" do
     end
 
     it { should have_content(user.name) }
-    it { should have_title("Slinky | " + user.name) }
+    it { should have_title("Slinky | Dashboard") }
 
     describe "links" do
       it { should have_link(link1.short_url) }
@@ -87,7 +87,7 @@ describe "User Pages" do
         click_button "Save changes"
       end
 
-      it { should have_title("New Name") }
+      it { should have_title("Slinky | Dashboard") }
       it { should have_link('Logout') }
       it { should have_selector('div.alert.alert-success') }
       specify { user.reload.name.should == "New Name" }

@@ -18,6 +18,16 @@
 
 
 $(document).ready(function() {
+
+    $.validator.addMethod(
+        "domain",
+        function(value, element) {
+            var test = /slnky.me/.test(value);
+            return !test;
+        },
+        "Your short URL cannot point to this site."
+    );
+
     $(".message").hide().fadeIn(500);
     $(".message").delay(4000).fadeOut(500);
     $(".alert").hide().fadeIn(500);
@@ -61,7 +71,8 @@ $(document).ready(function() {
     $('#new_link_form').validate({
         rules: {
             "link[long_url]": {
-                required: true
+                required: true,
+                domain: true
             }
         }
     });

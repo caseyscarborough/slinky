@@ -24,7 +24,7 @@ describe "Authentication" do
         click_button "Sign in"
       end
 
-      it { should have_title(user.name) }
+      it { should have_title("Slinky | Dashboard") }
       it { should have_link('Logout', href: logout_path) }
       it { should_not have_link('Login', href: login_path) }
 
