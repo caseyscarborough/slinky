@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require bootstrap
 //= require jquery.validate
+//= require ZeroClipboard
 
 
 $(document).ready(function() {
@@ -42,11 +43,18 @@ $(document).ready(function() {
                 success: function(data) {
                     $('#message').html(
                         "<h3>Success! View your short link below:</h3>" +
-                            "<a href='http://slnky.me/" + data.short_url +
-                            "'><h3>slnky.me/" + data.short_url + "</h3></a>"
+                            "<a id ='slnky-link' href='http://slnky.me/" + data.short_url +
+                            "' target='_blank'><h3 id='slnky-link-text'>slnky.me/" +
+                            data.short_url + "</h3></a>" +
+                            "<button id='clipboard-button' data-clipboard-text='http://slnky.me/" + data.short_url +
+                            "' class='btn btn-large btn-default'>Copy to Clipboard</button>"
                     );
                     $('#message').fadeIn(400);
-                    //$('#try-input').val('slnky.me/' + data.short_url);
+                    ZeroClipboard.setDefaults( { moviePath: '/lib/ZeroClipboard.swf' } );
+                    var clip = new ZeroClipboard($('#clipboard-button'));
+                    clip.on('complete', function(client, args) {
+                        alert('Link copied to clipboard: ' + args.text);
+                    });
                 }
             });
         } else {
@@ -56,7 +64,6 @@ $(document).ready(function() {
              );
             $('#message').fadeIn(400);
         }
-
     });
 
 
@@ -109,6 +116,7 @@ $(document).ready(function() {
             }
         }
     });
+
 });
 
 function startsWithSlinky(url) {

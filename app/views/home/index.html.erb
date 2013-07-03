@@ -8,11 +8,11 @@
       <p>Paste or type a URL below to try it out!</p>
       <%= form_for @link, :html => { :id => "try-it-out-form" } do |f| %>
         <div class="input-append">
-         <%= image_tag "/assets/arrow.png", :id => "arrow", height: '96', width: '96' %>
+         <%= image_tag "/assets/arrow.png", :id => "arrow", :style => 'margin-left:-48px', height: '96', width: '96' %>
           <%= f.text_field :long_url, :placeholder => "http://",
-                          :id => "try-input" %>
+                :id => "try-input", :name => "try-input" %>
           <%= f.button "Create", :class => "btn btn-large btn-default",
-                          :id => "try-button", :onclick => "return false;" %>
+                :id => "try-button", :name => "try-button", :onclick => "return false;" %>
         </div>
       <% end %>
       <div id="message" style="display:none"></div>

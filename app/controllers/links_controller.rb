@@ -20,9 +20,14 @@ class LinksController < ApplicationController
     if from_url.end_with?("localhost:3000/") || from_url.end_with?("slnky.me/")
       # UGH hackish and terrible. Will fix in near future.
       params[:link][:short_url] = generate_short_link
-      @link = Link.new(params[:link])
-      @link.total_clicks = 0
-      @link.save(:validate => false)
+      existing_link = existing_anonymous_link?(params[:link][:long_url])
+      if (existing_link)
+        @link = existing_link
+      else
+        @link = Link.new(params[:link])
+        @link.total_clicks = 0
+        @link.save(:validate => false)
+      end
       short_url = "slnky.me/" + @link.short_url
       puts short_url
       respond_with @link
@@ -108,6 +113,16 @@ class LinksController < ApplicationController
     def short_url_exists?(short_url)
       link = Link.find_by_short_url(short_url)
       link
+    end
+
+    def existing_anonymous_link?(long_url)
+      link = Link.find_by_long_url_and_user_id(long_url, nil)
+      if !link.nil?
+        link
+      else
+        puts "FAIL"
+        nil
+      end
     end
 
 end
