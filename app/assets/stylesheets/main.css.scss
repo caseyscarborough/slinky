@@ -59,6 +59,12 @@ a:hover {
 
 }
 
+#arrow {
+  margin-left:-48px;
+  height: 96px;
+  width: 96px;
+}
+
 #try-input {
   padding: 5px;
   margin-top: 35px;
@@ -307,6 +313,33 @@ a.btn.btn-default {
 }
 
 @media (max-width: 480px ) {
+
+  .hero-unit {
+    padding: 15px;
+    background: #eee;
+  }
+
+  #arrow {
+    margin-top: 10px;
+    width: 70px;
+    height: 70px;
+  }
+
+  #try-input {
+    width: 200px;
+    font-size: 20px;
+    line-height: 20px;
+    border-radius: 6px;
+  }
+
+  #try-button {
+    display: block;
+    margin: 10px auto 0;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 20px;
+  }
+
   .form-horizontal {
 
     text-align: center;
