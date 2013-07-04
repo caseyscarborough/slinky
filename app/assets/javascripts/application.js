@@ -18,6 +18,8 @@
 
 
 $(document).ready(function() {
+    $("#wtf").popover({html: true});
+
     $.validator.addMethod(
         "domain",
         function(value, element) {
@@ -77,6 +79,35 @@ $(document).ready(function() {
     $(".alert").delay(4000).fadeOut(500);
 
     $('#new_user_form').validate({
+        rules: {
+            "user[first_name]": {
+                required: true
+            },
+            "user[last_name]": {
+                required: true
+            },
+            "user[password]": {
+                required: true
+            },
+            "user[email]": {
+                required: true,
+                maxlength: 100
+            },
+            "user[password_confirmation]": {
+                required: true,
+                equalTo: "#user_password",
+                minlength: 6
+            }
+        },
+        messages: {
+            "user[password_confirmation]": {
+                equalTo: "Passwords must match.",
+                minlength: "Password must be at least 6 characters."
+            }
+        }
+    });
+
+    $('#edit_user_form').validate({
         rules: {
             "user[first_name]": {
                 required: true

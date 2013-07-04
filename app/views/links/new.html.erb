@@ -3,11 +3,14 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span1 hidden-phone"></div>
+    <div class="span3">
+      <%= render 'users/sidebar' %>
+    </div>
     <div class="main span7">
       <br />
-      <h1>New Link</h1>
-      Use this page to create your new link.<br />
-      Short link cannot contain special characters.<br /><br />
+      <h1>New Link</h1><br />
+      <p>Use this page to create your new link.<br />
+      Short link cannot contain special characters.</p><br />
       <%= render 'links/link_errors' %>
       <%= form_for @link, :html => { :class => "form-horizontal",
                                      :name => "new_link_form",
@@ -36,9 +39,6 @@
         </div>
         <%= f.submit "Create Link", class: "btn btn-large btn-default" %>
       <% end %>
-    </div>
-    <div class="span3">
-      <%= render 'users/sidebar' %>
     </div>
   </div>
 </div>

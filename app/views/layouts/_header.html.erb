@@ -15,9 +15,9 @@
               <i class="caret"></i>
             </a>
             <ul class="dropdown-menu">
-              <li><%= link_to "Dashboard", dashboard_path %></li>
-              <li><%= link_to "Edit Profile", edit_user_path(current_user) %></li>
-              <li><%= link_to "New Link", new_link_path %></li>
+              <li><%= link_to "Dashboard", dashboard_path, :html => { :class => 'user-link' } %></li>
+              <li><%= link_to "Edit Profile", profile_path, :html => { :class => 'user-link' } %></li>
+              <li><%= link_to "New Link", new_link_path, :html => { :class => 'user-link' } %></li>
             </ul>
           </li>
         <% end %>

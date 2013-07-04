@@ -63,13 +63,13 @@ describe "User Pages" do
       fill_in "Email", with: user.email
       fill_in "Password", with: user.password
       click_button "Sign in"
-      visit edit_user_path(user)
+      visit profile_path
     end
 
     describe "page" do
       it { should have_selector('h1', text: "Update your profile") }
-      it { should have_title('Slinky | Edit User') }
-      it { should have_link('Change', href: 'http://gravatar.com/emails') }
+      it { should have_title('Slinky | Edit Profile') }
+      it { should have_link('Change Avatar', href: 'http://gravatar.com/emails') }
     end
 
     describe "with invalid information" do

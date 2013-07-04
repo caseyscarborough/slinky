@@ -3,8 +3,10 @@ require_relative '../../app/models/user'
 class LinksController < ApplicationController
   before_filter :signed_in_user, only: [:new]
 
+  # Yeah, I know this is a terrible idea...
   INVALID_SHORT_LINKS = %w[users login signup
-                         logout links dashboard]
+                         logout links dashboard
+                          profile]
 
   respond_to :json
 
@@ -100,7 +102,7 @@ class LinksController < ApplicationController
       short_url = nil
       loop do
         rand_char =  [('a'..'z'),('A'..'Z'),(0..9)].map{|i| i.to_a}.flatten
-        short_url = (0...7).map{ rand_char[rand(rand_char.length)] }.join
+        short_url = (0...4).map{ rand_char[rand(rand_char.length)] }.join
         break if !short_url_exists?(short_url)
       end
       short_url

@@ -1,29 +1,33 @@
 <% @user = current_user %>
-<br />
-<div class="overflow:visible">
-  <div style="float:left;padding-right:10px;"><%= gravatar_for @user, '80', 'img-polaroid' %></div>
-  <h4><%= @user.name %></h4>
-  <%= @user.email %><br />
-  <% if @user != nil %>
-    <%= link_to "Edit Profile", edit_user_path(@user) %>
-  <% end %>
-</div>
-<div style="clear:both"></div>
-<div class='sidebar'>
-  <h3>User Stats</h3>
-  <table>
-    <tr>
-      <td>Registered:</td>
-      <td><%= @user.created_at.strftime("%b %e, %Y") %></td>
-    </tr>
-    <tr>
-      <td>Total Links:</td>
-      <td><%= @user.links.count %></td>
-    </tr>
-    <tr>
-      <td>Total Clicks:</td>
-      <td><%= total_clicks(@user) %></td>
-    </tr>
-  </table>
+<div id="sidebar">
+  <div class="sidebar">
+  <div><%= gravatar_for @user, '250', 'img-polaroid' %></div>
+  <div style="clear:both">
+    <br />
+    <h3><%= @user.name %></h3>
+    <% if @user != nil %>
+      <%= link_to "Dashboard", dashboard_path %><br />
+      <%= link_to "Edit Profile", profile_path %><br />
+      <%= link_to "New Short Link", new_link_path %>
+    <% end %>
+  </div>
+  </div>
+  <div class='sidebar gray'>
+    <h3>User Stats</h3>
+    <table>
+      <tr>
+        <td>Registered:</td>
+        <td><%= @user.created_at.strftime("%b %e, %Y") %></td>
+      </tr>
+      <tr>
+        <td>Total Links:</td>
+        <td><%= @user.links.count %></td>
+      </tr>
+      <tr>
+        <td>Total Clicks:</td>
+        <td><%= total_clicks(@user) %></td>
+      </tr>
+    </table>
+  </div>
 </div>
 <br /><br />

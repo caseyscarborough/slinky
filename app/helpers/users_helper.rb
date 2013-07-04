@@ -2,8 +2,8 @@ module UsersHelper
 
   def gravatar_for(user, size='80', css_class='')
     id = Digest::MD5::hexdigest(user.email.downcase)
-    url = "https://secure.gravatar.com/avatar/#{id}"
-    image_tag(url, alt: user.name, class: "gravatar #{css_class}", height: size, width: size)
+    url = "https://secure.gravatar.com/avatar/#{id}?s=#{size}"
+    image_tag(url, alt: user.name, class: "gravatar #{css_class}")
   end
 
   def total_clicks(user)

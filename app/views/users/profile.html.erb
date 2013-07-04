@@ -1,11 +1,15 @@
-<% provide(:title, "Edit User") %>
+<% provide(:title, "Edit Profile") %>
 
 <div class="container-fluid">
 <div class="row-fluid">
-  <div class="span3 hidden-phone"></div>
-  <div class="span6 main">
-    <h1 style="line-height: 60px;">Update your profile</h1><br />
-    <%= form_for @user, :html => { :class => "form-horizontal" } do |f| %>
+  <div class="span1 hidden-phone"></div>
+  <div class="span3">
+    <%= render 'users/sidebar' %>
+  </div>
+  <div class="span7 main"><br />
+    <h1>Update your profile</h1><br />
+    <%= form_for @user, :html => { :class => "form-horizontal", :name => "edit_user_form",
+                                   :id => "edit_user_form" } do |f| %>
       <%= render 'shared/errors' %>
 
       <div class="control-group">
@@ -59,9 +63,18 @@
 
       <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
     <% end %><br />
+    <div class="span1 hidden-phone"></div>
+    <div class="span4">
+      <%= gravatar_for @user, '120', 'img-polaroid'  %><br />
+      <a href="http://gravatar.com/emails">Change Avatar</a>
+    </div>
+    <div class="span4">
+      <a href="#" onclick="return false;" id="wtf" data-toggle="popover" data-content="<small>Slinky uses
+       <a href='http://gravatar.com'>gravatar.com</a> for profile images. A Gravatar is a globally recognized avatar, and they're
+       pretty sweet! Click <a href='http://gravatar.com/emails'>Change Avatars</a> to create your Gravatar now.</small>"
+       data-original-title="What's up with the avatar?" data-html="true" data-placement="bottom">What's up with the avatar?</a>
+    </div>
 
-    <%= gravatar_for @user %>
-    <a href="http://gravatar.com/emails">Change</a>
   </div>
 </div>
 </div>

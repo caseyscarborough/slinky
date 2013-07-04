@@ -27,7 +27,11 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find(params[:id])
+    redirect_to profile_path
+  end
+
+  def profile
+    @user = User.find(current_user)
   end
 
   def update

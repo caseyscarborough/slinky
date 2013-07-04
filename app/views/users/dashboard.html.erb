@@ -2,8 +2,11 @@
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span1 hidden-phone"></div>
-    <div class="span7">
-      <h3>Short Links &nbsp;&nbsp;<%= link_to "New", new_link_path %></h3>
+    <div class="span3">
+      <%= render 'users/sidebar' %>
+    </div>
+    <div class="span7 main"><br />
+      <h1 >Dashboard</h1><br />
       <div id="links-table">
         <% if @user.links.any? %>
           <table class="table table-hover table-striped table-condensed links">
@@ -19,12 +22,12 @@
           </table>
           <%= will_paginate @links %>
         <% else %>
-          <p>You haven't created any links yet.</p>
+          <br /><br />
+          <h2 class="muted">You haven't created any links yet.</h2>
+          <h3><%= link_to "Create one now!", new_link_path %></h3>
         <% end %>
       </div>
     </div>
-    <div class="span3">
-      <%= render 'users/sidebar' %>
-    </div>
+
   </div>
 </div>

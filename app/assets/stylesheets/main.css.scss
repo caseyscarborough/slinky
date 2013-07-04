@@ -92,6 +92,8 @@ a:hover {
   }
 }
 
+.gravatar {
+}
 
 .navbar-inner {
   background: #f9f9f9;
@@ -147,14 +149,17 @@ a:hover {
 }
 
 .sidebar {
-  background: #eee;
   border-radius: 10px;
   -webkit-border-radius: 10px;
   -moz-border-radius: 10px;
   -o-border-radius: 10px;
   padding: 15px;
   overflow: visible;
-  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.gray {
+  background: #eee;
 }
 
 .footer {
@@ -184,11 +189,11 @@ div .field_with_errors {
   max-width: 450px;
 
   .controls {
-    margin-left: 110px;
+    margin-left:150px;
   }
 
   .control-label {
-    width: 100px;
+    font-size:16px;
   }
 
   div.control-group {
@@ -209,7 +214,9 @@ label.error {
   text-align: center;
 }
 
-
+.justified {
+  text-align: justify;
+}
 
 /* BUTTONS */
 a.btn.btn-default {
@@ -238,8 +245,37 @@ a.btn.btn-default {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
+@import "bootstrap-responsive";
 
 /* Media Queries */
+
+@media (max-width: 979px) {
+  .nav-collapse .nav > li > a:hover, .nav-collapse .dropdown-menu a:hover {
+    background: none;
+  }
+
+  .nav-collapse .nav > li > a, .nav-collapse .dropdown-menu a {
+    margin-top: 10px;
+    float: right;
+  }
+
+  .nav-collapse .nav > li > a.dropdown-toggle{
+    float: left;
+  }
+
+  .dropdown {
+    display: block;
+    clear: both;
+    float: left;
+    position: absolute;
+    left: 0px;
+  }
+
+  .dropdown-toggle {
+    float: left;
+  }
+
+}
 
 @media (max-width: 767px) {
   .navbar .brand {
@@ -255,6 +291,21 @@ a.btn.btn-default {
     padding: 15px 20px;
     margin-right: -10px;
   }
+
+  #sidebar {
+    text-align: center;
+
+    img.gravatar {
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    table {
+      margin: 0 auto;
+    }
+
+  }
+
 }
 
 @media (max-width: 480px ) {
@@ -285,5 +336,5 @@ a.btn.btn-default {
 }
 
 
-@import "bootstrap-responsive";
+
 
