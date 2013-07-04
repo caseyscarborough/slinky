@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  <style>
+    body {
+      font-family: 'Verdana', sans-serif;
+      font-size: 16px;
+    }
+
+    h1 {
+      font-family: 'Georgia', serif;
+      font-size: 48px;
+    }
+  </style>
+</head>
+<body>
+<h1>Welcome to Slinky, <%= @user.first_name %>!</h1>
+<p>You have successfully signed up for the Slinky service!</p>
+<p>Click the button below to login to the site.<br /><br />
+  <a href="<%= @url %>" class="btn btn-primary">Login</a></p><br />
+<p>Thanks for joining and have a great day!</p>
+<h3>Casey Scarborough</h3>
+<br /><br /><small>This email comes from an unmonitored mailbox, please do not reply!</small>
+</body>
+</html>
