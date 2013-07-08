@@ -19,7 +19,7 @@ class LinksController < ApplicationController
     params[:link][:total_clicks] = 0
     params[:link][:long_url] = validate_long_url(params[:link][:long_url])
 
-    if from_url.end_with?("localhost:3000/") || from_url.end_with?("slnky.me/")
+    if from_url.end_with?("localhost:3000/") || from_url.end_with?("slnky.me/") || from_url.end_with?("caseyscarborough.com/")
       # UGH hackish and terrible. Will fix in near future.
       params[:link][:short_url] = generate_short_link
       existing_link = existing_anonymous_link?(params[:link][:long_url])

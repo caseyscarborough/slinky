@@ -5,11 +5,11 @@ Slinky::Application.routes.draw do
 
   root :to => 'home#index'
 
-  match '/login' => "sessions#new"
-  match '/logout' => "sessions#destroy"
-  match '/signup' => "users#new"
-  match '/dashboard' => "users#dashboard"
-  match '/profile' => "users#profile"
+  match '/login/' => "sessions#new"
+  match '/logout/' => "sessions#destroy"
+  match '/signup/' => "users#new"
+  match '/dashboard/' => "users#dashboard"
+  match '/profile/' => "users#profile"
   match '*a' => "links#check_for_valid_link"
 
 end

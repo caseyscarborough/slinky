@@ -6,7 +6,8 @@ gem 'jquery-rails'
 gem 'bootstrap-sass', '2.1'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem 'faker'
+gem 'faker'  
+gem 'sqlite3', '1.3.7'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -15,7 +16,6 @@ group :assets do
 end
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'rspec-rails'
 end
 

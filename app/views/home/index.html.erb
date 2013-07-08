@@ -24,24 +24,25 @@
   <div class="row-fluid">
     <div class="span2 hidden-phone"></div>
     <div class="span8 main">
-      <h4 style="padding:10px;">Create an account to start keeping track of your links!</h4>
-      <%= link_to "Sign up now!", signup_path, {:class => 'btn btn-default btn-large'} %>
+      <h4 style="padding:10px;">Create an account or login to start keeping track of your links!</h4>
+      <%= link_to "Sign up now!", signup_path, {:class => 'btn btn-default btn-large', :id => "signup-button"} %>
+      <%= link_to "Login", login_path, {:class => 'btn btn-inverse btn-large', :id => "login-button"} %>
     </div>
   </div>
 </div><br /><br /><br />
 <div class="container-fluid">
-  <div class="row-fluid justified">
+  <div class="row-fluid">
     <div class="span2 hidden-phone"></div>
     <div style="padding:10px;" class="span4">
-        <h3><i style="margin: 10px 10px 0 0;" class="icon-folder-open"></i>Condense long links</h3>
-        Shortening long links by creating a short URL allows you to
-        remember the link easier, fit the link in a shorter space (such
-        as a Twitter post), and to look nicer.
+      <h3><i style="margin: 10px 10px 0 0;" class="icon-folder-open"></i>Condense long links</h3>
+      <p class="justified">Shortening long links by creating a short URL allows you to
+      remember the link easier, fit the link in a shorter space (such
+      as a Twitter post), and to create a link with a format that looks cleaner.</p>
     </div>
     <div style="padding:10px;" class="span4">
-        <h3><i style="margin: 10px 10px 0 0;" class="icon-bookmark"></i>Keep track of important URLs</h3>
-        Slinky doubles as a place to store important URLs, such as your
-        personal webpage or a frequently downloaded file.
+      <h3><i style="margin: 10px 10px 0 0;" class="icon-bookmark"></i>Keep track of important URLs</h3>
+      <p class="justified">Slinky doubles as a place to store important URLs, such as your
+      personal webpage or frequently visited webpages and downloaded files</p>
     </div>
   </div>
 </div>

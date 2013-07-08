@@ -81,6 +81,14 @@ a:hover {
   font-size: 26px;
 }
 
+#signup-button {
+  width: 110px;
+}
+
+#login-button {
+  width: 110px;
+}
+
 #checkmark {
   display: none;
   position: absolute;
@@ -223,7 +231,7 @@ label.error {
 }
 
 /* BUTTONS */
-a.btn.btn-default {
+a.btn {
   color: white;
 }
 .btn-default {
