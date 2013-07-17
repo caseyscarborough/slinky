@@ -21,7 +21,7 @@ class LinksController < ApplicationController
 
     if from_url.end_with?("localhost:3000/") || from_url.end_with?("slnky.me/") || from_url.end_with?("caseyscarborough.com/")
       # UGH hackish and terrible. Will fix in near future.
-      params[:link][:short_url] = generate_short_link
+      params[:link][:short_url] = Link.generate_short_link
       existing_link = existing_anonymous_link?(params[:link][:long_url])
       if (existing_link)
         @link = existing_link
@@ -37,7 +37,7 @@ class LinksController < ApplicationController
     end
 
     if params[:link][:short_url] == ""
-      params[:link][:short_url] = generate_short_link
+      params[:link][:short_url] = Link.generate_short_link
     end
 
     if reserved_word?(params[:link][:short_url])
@@ -98,23 +98,8 @@ class LinksController < ApplicationController
       end
     end
 
-    def generate_short_link
-      short_url = nil
-      loop do
-        rand_char =  [('a'..'z'),('A'..'Z'),(0..9)].map{|i| i.to_a}.flatten
-        short_url = (0...4).map{ rand_char[rand(rand_char.length)] }.join
-        break if !short_url_exists?(short_url)
-      end
-      short_url
-    end
-
     def reserved_word?(short_url)
       INVALID_SHORT_LINKS.include?(short_url)
-    end
-
-    def short_url_exists?(short_url)
-      link = Link.find_by_short_url(short_url)
-      link
     end
 
     def existing_anonymous_link?(long_url)
@@ -122,7 +107,6 @@ class LinksController < ApplicationController
       if !link.nil?
         link
       else
-        puts "FAIL"
         nil
       end
     end

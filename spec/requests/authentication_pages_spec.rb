@@ -41,7 +41,7 @@ describe "Authentication" do
       describe "in the Users controller" do
 
         describe "visiting the edit page" do
-          before { visit  profile_path }
+          before { visit profile_path }
           it { should have_title('Slinky | Login') }
         end
 
