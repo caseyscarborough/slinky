@@ -3,7 +3,6 @@ require_relative '../../app/models/user'
 class LinksController < ApplicationController
   before_filter :signed_in_user, only: [:new]
 
-  # Yeah, I know this is a terrible idea...
   INVALID_SHORT_LINKS = %w[users login signup
                          logout links dashboard
                           profile]
@@ -13,25 +12,21 @@ class LinksController < ApplicationController
   def new
     @link = Link.new
   end
-
+  
   def create
     from_url = request.referrer.to_s
     params[:link][:total_clicks] = 0
     params[:link][:long_url] = validate_long_url(params[:link][:long_url])
 
-    if from_url.end_with?("localhost:3000/") || from_url.end_with?("slnky.me/") || from_url.end_with?("caseyscarborough.com/")
-      # UGH hackish and terrible. Will fix in near future.
+    if from_url.end_with?("localhost:3000/") || from_url.end_with?("slnky.me/")
       params[:link][:short_url] = Link.generate_short_link
       existing_link = existing_anonymous_link?(params[:link][:long_url])
       if (existing_link)
         @link = existing_link
       else
         @link = Link.new(params[:link])
-        @link.total_clicks = 0
         @link.save(:validate => false)
       end
-      short_url = "slnky.me/" + @link.short_url
-      puts short_url
       respond_with @link
       return
     end
@@ -63,7 +58,7 @@ class LinksController < ApplicationController
     link = Link.find_by_short_url(short_url)
     if !link.nil?
       link.total_clicks += 1
-      link.last_visited = Time.new
+      link.last_visited = Time.now
       link.save
       redirect_to link.long_url
     else
