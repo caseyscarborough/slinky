@@ -18,7 +18,16 @@
 
 
 $(document).ready(function() {
+
+    // Popover for Gravatar on edit profile page
     $("#wtf").popover({html: true});
+
+    // Tooltips
+    $('#nav-home').tooltip();
+    $('#nav-signup').tooltip();
+    $('#nav-login').tooltip();
+    $('#nav-logout').tooltip();
+    $('#nav-dashboard').tooltip();
 
     $.validator.addMethod(
         "domain",

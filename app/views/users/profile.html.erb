@@ -61,12 +61,12 @@
         </div>
       </div>
 
-      <%= f.submit "Save changes", class: "btn btn-large btn-primary" %>
+      <%= f.submit "Save changes", class: "btn btn-large btn-default" %>
     <% end %><br />
     <div class="span1 hidden-phone"></div>
     <div class="span4">
-      <%= gravatar_for @user, '120', 'img-polaroid'  %><br />
-      <a href="http://gravatar.com/emails">Change Avatar</a>
+      <a href="http://gravatar.com/emails"><%= gravatar_for @user, '120', 'img-polaroid'  %><br />
+      Change Avatar</a>
     </div>
     <div class="span4">
       <a href="#" onclick="return false;" id="wtf" data-toggle="popover" data-content="<small>Slinky uses

@@ -1,5 +1,5 @@
 <tr id>
-  <td><%= link_to "/links/" + link.id.to_s, :class => "trash" do %><i class="icon-trash"><% end %></i></td>
+  <td><%= link_to "/links/" + link.id.to_s, :class => "trash", :remote => true, "data-confirm" => 'Are you sure?', :onclick => 'return false;' do %><i class="icon-trash icon-large"><% end %></i></td>
   <td><%= link_to link.short_url, "/" + link.short_url, :target => "_blank" %></td>
   <td><%= link.long_url.gsub(/http[s]?:\/\//, "").truncate(25) %></td>
   <td style="text-align: center;"><%= link.total_clicks %></td>

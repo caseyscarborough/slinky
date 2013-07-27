@@ -2,7 +2,6 @@
 
 $btn-default: #005abf;
 
-
 h1, h2, h3, h4, h5 {
   padding: 0px;
   margin: 0 0 10px;
@@ -20,7 +19,8 @@ body {
 }
 
 h1 {
-  font-family: 'Lily Script One', cursive;
+  font-family: 'Pacifico' !important;
+  font-weight: normal;
   font-size: 48px;
 }
 
@@ -29,8 +29,12 @@ h3 {
   line-height: 24px;
 }
 
-.hero-unit h1 {
-  font-size: 60px;
+.hero-unit {
+  border-radius: 0px;
+  width: 100%;
+  h1 {
+    font-size: 60px;
+  }
 }
 
 a, a:visited {
@@ -110,17 +114,22 @@ a:hover {
 }
 
 .navbar-inner {
-  background: #f9f9f9;
+  background: #f7f7f7; /* Old browsers */
+  background: -moz-linear-gradient(top,  #f7f7f7 0%, #eaeaea 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#eaeaea)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top,  #f7f7f7 0%,#eaeaea 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top,  #f7f7f7 0%,#eaeaea 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(top,  #f7f7f7 0%,#eaeaea 100%); /* IE10+ */
+  background: linear-gradient(to bottom,  #f7f7f7 0%,#eaeaea 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#eaeaea',GradientType=0 ); /* IE6-9 */
   border:none;
-  box-shadow: none;
+  box-shadow: 0px 0px 5px #999;
   border-radius:0;
-  padding:15px 10px;
+  padding:15px 5px;
   font-size: 16px;
-
   /*border-bottom: 3px solid $btn-default;*/
   a:hover {
-    color: #333;
-    background: #f9f9f9;
+    color: #000;
   }
 }
 
@@ -134,7 +143,7 @@ a:hover {
 .navbar .nav li.dropdown.open > .dropdown-toggle,
 .navbar .nav li.dropdown.active > .dropdown-toggle,
 .navbar .nav li.dropdown.open.active > .dropdown-toggle {
-  background-color: #f9f9f9;
+  background-color: #eee;
   color: #333;
 }
 
@@ -148,8 +157,9 @@ a:hover {
 
 .navbar-inner .brand {
   margin-left: 7%;
-  font-family: 'Lily Script One', cursive;
-  font-size: 48px;
+  margin-top: -5px;
+  font-family: 'Pacifico' !important;
+  font-size: 42px;
   color: #005abf;
   text-shadow: 0px 1px 2px #aaa;
   sup {
@@ -159,10 +169,6 @@ a:hover {
 }
 
 .sidebar {
-  border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -moz-border-radius: 10px;
-  -o-border-radius: 10px;
   padding: 15px;
   overflow: visible;
   margin-bottom: 20px;
@@ -257,37 +263,11 @@ a.btn {
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
 
+
 @import "bootstrap-responsive";
 
 /* Media Queries */
 
-@media (max-width: 979px) {
-  .nav-collapse .nav > li > a:hover, .nav-collapse .dropdown-menu a:hover {
-    background: none;
-  }
-
-  .nav-collapse .nav > li > a, .nav-collapse .dropdown-menu a {
-    margin-top: 10px;
-    float: right;
-  }
-
-  .nav-collapse .nav > li > a.dropdown-toggle{
-    float: left;
-  }
-
-  .dropdown {
-    display: block;
-    clear: both;
-    float: left;
-    position: absolute;
-    left: 0px;
-  }
-
-  .dropdown-toggle {
-    float: left;
-  }
-
-}
 
 @media (max-width: 767px) {
   .navbar .brand {
