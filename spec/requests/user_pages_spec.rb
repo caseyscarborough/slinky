@@ -89,7 +89,7 @@ describe "User Pages" do
       end
 
       it { should have_title("Slinky | Edit Profile") }
-      it { should have_link('Logout') }
+      it { should have_css('#nav-logout') }
       it { should have_selector('div.alert.alert-success') }
       specify { user.reload.name.should == "New Name" }
       specify { user.reload.email.should == "new@email.com" }

@@ -25,12 +25,12 @@ describe "Authentication" do
       end
 
       it { should have_title("Slinky | Dashboard") }
-      it { should have_link('Logout', href: logout_path) }
-      it { should_not have_link('Login', href: login_path) }
+      it { should have_css('#nav-logout') }
+      it { should_not have_css('#nav-login') }
 
       describe "followed by signout" do
-        before { click_link "Logout" }
-        it { should have_link('Login') }
+        before { find("#nav-logout > a").click }
+        it { should have_css('.icon-signin') }
       end
     end
   end
