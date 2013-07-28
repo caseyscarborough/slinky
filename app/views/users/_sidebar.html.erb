@@ -1,8 +1,12 @@
 <% @user = current_user %>
-<div id="sidebar">
+<div id="sidebar" class="main">
+  <div>
+    <%= link_to profile_path do %>
+      <%= gravatar_for @user, '250' %>
+    <% end %>
+  </div>
   <div class="sidebar">
-  <div><%= gravatar_for @user, '250', 'img-polaroid' %></div>
-  <div style="clear:both">
+  <div>
     <br />
     <h3><%= @user.name %></h3>
     <% if @user != nil %>
@@ -10,9 +14,8 @@
       <%= link_to "Edit Profile", profile_path %><br />
       <%= link_to "New Short Link", new_link_path %>
     <% end %>
-  </div>
-  </div>
-  <div class='sidebar gray'>
+  </div><br />
+  <div>
     <h3>User Stats</h3>
     <table>
       <tr>
@@ -28,6 +31,7 @@
         <td><%= total_clicks(@user) %></td>
       </tr>
     </table>
+  </div>
   </div>
 </div>
 <br /><br />

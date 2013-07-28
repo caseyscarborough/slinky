@@ -6,26 +6,28 @@
       <%= render 'users/sidebar' %>
     </div>
     <div class="span7 main"><br />
-      <h1 >Dashboard</h1><br />
-      <div id="links-table">
-        <% if @user.links.any? %>
-          <table class="table table-hover table-striped links">
-            <tr>
-              <th></th>
-              <th>Short URL</th>
-              <th>Long URL</th>
-              <th style="text-align: center;">Clicks</th>
-              <th class="hidden-phone">Last Visited</th>
-              <%# <th>Date Created</th> %>
-            </tr>
-            <%= render @links %>
-          </table>
-          <%= will_paginate @links %>
-        <% else %>
-          <br /><br />
-          <h2 class="muted">You haven't created any links yet.</h2>
-          <h3><%= link_to "Create one now!", new_link_path %></h3>
-        <% end %>
+      <div class="dashboard">
+        <h1 >Dashboard</h1><br />
+        <div id="links-table">
+          <% if @user.links.any? %>
+            <table class="table table-hover table-striped links">
+              <tr>
+                <th></th>
+                <th>Short URL</th>
+                <th>Long URL</th>
+                <th style="text-align: center;">Clicks</th>
+                <th class="hidden-phone">Last Visited</th>
+                <%# <th>Date Created</th> %>
+              </tr>
+              <%= render @links %>
+            </table>
+            <%= will_paginate @links %>
+          <% else %>
+            <br /><br />
+            <h2 class="muted">You haven't created any links yet.</h2>
+            <h3><%= link_to "Create one now!", new_link_path %></h3>
+          <% end %>
+        </div>
       </div>
     </div>
 

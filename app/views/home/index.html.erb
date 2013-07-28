@@ -1,29 +1,25 @@
 <% provide(:title, 'Welcome') %>
 <div class="container-fluid">
-  <div class="row-fluid">
-    <div class="span1 hidden-phone"></div>
-    <div class="span10 hero-unit main">
-      <h1>Welcome to Slinky!</h1><br />
-      <p>Slinky is a web-application used to create short URLs and to save them for later use.</p>
-      <p>Paste or type a URL below to try it out!</p>
-      <%= form_for @link, :html => { :id => "try-it-out-form" } do |f| %>
-        <div class="input-append">
-         <%= image_tag "/assets/arrow.png", :id => "arrow" %>
-          <%= f.text_field :long_url, :placeholder => "http://",
-                :id => "try-input", :name => "try-input" %>
-          <%= f.button "Create", :class => "btn btn-large btn-default",
-                :id => "try-button", :name => "try-button", :onclick => "return false;" %>
-        </div>
-      <% end %>
-      <div id="message" style="display:none"></div>
-    </div>
+  <div class="row-fluid masthead">
+    <h1>Welcome to Slinky!</h1><br />
+    <p>Slinky is a web-application used to create short URLs and to save them for later use.</p>
+    <p>Paste or type a URL below to try it out!</p>
+    <%= form_for @link, :html => { :id => "try-it-out-form" } do |f| %>
+      <div class="input-append">
+       <%= image_tag "/assets/arrow.png", :id => "arrow" %>
+        <%= f.text_field :long_url, :placeholder => "http://",
+              :id => "try-input", :name => "try-input" %>
+        <%= f.button "Create", :class => "btn btn-large btn-default",
+              :id => "try-button", :name => "try-button", :onclick => "return false;" %>
+      </div>
+    <% end %>
+    <div id="message" style="display:none"></div>
   </div>
 </div>
-<br />
 <div class="container-fluid">
   <div class="row-fluid">
     <div class="span2 hidden-phone"></div>
-    <div class="span8 main">
+    <div class="span8 center">
       <h4 style="padding:10px;">Create an account or login to start keeping track of your links!</h4>
       <%= link_to "Sign up now!", signup_path, {:class => 'btn btn-default btn-large', :id => "signup-button"} %>
       <%= link_to "Login", login_path, {:class => 'btn btn-inverse btn-large', :id => "login-button"} %>

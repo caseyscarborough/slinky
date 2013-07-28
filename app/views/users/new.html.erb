@@ -1,8 +1,8 @@
 <% provide(:title, "Signup") %>
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span2 hidden-phone"></div>
-    <div class="span8">
+    <div class="span3 hidden-phone"></div>
+    <div class="span6 main">
       <h1 style="text-align: center">Sign Up</h1>
       <div class="error_box"></div>
       <%= form_for @user, :html => { :id => "new_user_form", :name => "new_user_form",
@@ -62,12 +62,7 @@
           </div>
         </div>
 
-        <div class="control-group">
-          <label class="control-label"></label>
-          <div class="controls">
-            <%= f.submit "Create account", class: "btn btn-large btn-default" %>
-          </div>
-        </div>
+        <%= f.submit "Create account", class: "btn btn-large btn-default" %>
 
       <% end %>
 
