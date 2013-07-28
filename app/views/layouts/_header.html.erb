@@ -27,11 +27,6 @@
           </ul>
         </li>
       <% end %>
-      <li id="nav-home" data-toggle="tooltip" title="Home" data-placement="bottom">
-        <%= link_to '/' do %>
-          <i class="icon-home icon-large"></i>
-        <% end %>
-      </li>
       <% if signed_in? %>
         <!-- Dashboard Link -->
         <li id='nav-dashboard' data-toggle="tooltip" title="Dashboard" data-placement="bottom">
@@ -46,6 +41,11 @@
           <% end %>
         </li>
       <% else %>
+        <li id="nav-home" data-toggle="tooltip" title="Home" data-placement="bottom">
+          <%= link_to '/' do %>
+            <i class="icon-home icon-large"></i>
+          <% end %>
+        </li>
         <li id='nav-signup' data-toggle="tooltip" title="Sign Up" data-placement="bottom">
           <%= link_to signup_path do %>
             <i class="icon-user icon-large"></i>

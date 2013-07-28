@@ -220,6 +220,10 @@ a:hover {
   background-color: #c9dbf5;
 }
 
+.table th, .table td {
+  border: none;
+}
+
 input {
   height: auto !important;
 }
