@@ -1,0 +1,150 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Slinky by caseyscarborough</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/caseyscarborough/slinky">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/caseyscarborough/slinky/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/caseyscarborough/slinky/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Slinky</h1>
+          <p>A web-application for shortening URLs.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/caseyscarborough">caseyscarborough</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="slinky-web-application" class="anchor" href="#slinky-web-application"><span class="octicon octicon-link"></span></a>Slinky Web Application</h1>
+
+<p>Slinky is a URL Shortener web application written using Ruby 2.0 and Rails 3.2.13.</p>
+
+<p>The application can be used and seen at <a href="http://slnky.me">http://slnky.me/</a>. The following is a screen capture of the application's homepage in it's current state.</p>
+
+<p><img src="https://github.com/caseyscarborough/slinky/raw/master/app/assets/images/homepage.png" alt="alt text" title="The application's main layout."></p>
+
+<h1>
+<a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies</h1>
+
+<p>This application uses the following system dependencies:</p>
+
+<ul>
+<li>Ruby 2.0.0 (possibly 1.9.3, but not tested)</li>
+<li>Rails 3.2.13</li>
+<li>PostgreSQL for production (not needed for development or testing)</li>
+<li>Other gems listed in <a href="https://github.com/caseyscarborough/slinky/blob/master/Gemfile">Gemfile</a>
+</li>
+</ul><h2>
+<a name="using-the-application" class="anchor" href="#using-the-application"><span class="octicon octicon-link"></span></a>Using the Application</h2>
+
+<p>If you'd like to run the application locally or contribute to the application, begin by cloning the application and installing necessary dependencies:</p>
+
+<div class="highlight"><pre>git clone http://github.com/caseyscarborough/slinky.git
+<span class="nb">cd </span>slinky
+bundle install
+</pre></div>
+
+<p>Afterwards, create and migrate the database and fire up the rails development server.</p>
+
+<div class="highlight"><pre>rake db:migrate
+rails server
+</pre></div>
+
+<p>Afterwards, navigate to <a href="http://localhost:3000">http://localhost:3000</a> in your web browser to see the application in action.</p>
+
+<h2>
+<a name="configuring-the-application" class="anchor" href="#configuring-the-application"><span class="octicon octicon-link"></span></a>Configuring the Application</h2>
+
+<p>If you'd like to generate sample data for a user, you can do so by editing the <a href="https://github.com/caseyscarborough/slinky/blob/master/lib/tasks/sample_data.rake">lib/tasks/sample_data.rake</a> file.</p>
+
+<div class="highlight"><pre><span class="c1"># Generate first user, typically the one you'll use.</span>
+<span class="no">User</span><span class="o">.</span><span class="n">create</span><span class="p">(</span>
+  <span class="n">first_name</span><span class="p">:</span> <span class="s1">'Casey'</span><span class="p">,</span> 
+  <span class="n">last_name</span><span class="p">:</span> <span class="s1">'Scarborough'</span><span class="p">,</span>
+  <span class="ss">email</span><span class="p">:</span> <span class="s1">'casey@caseyscarborough.com'</span><span class="p">,</span>
+  <span class="ss">password</span><span class="p">:</span> <span class="s1">'password'</span><span class="p">,</span>
+  <span class="n">password_confirmation</span><span class="p">:</span> <span class="s1">'password'</span>
+<span class="p">)</span>
+
+<span class="c1"># Create links for each user in the system.</span>
+<span class="nb">puts</span> <span class="s1">'Generating links...'</span>
+<span class="no">User</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">user</span><span class="o">|</span>     
+  <span class="mi">15</span><span class="o">.</span><span class="n">times</span> <span class="k">do</span> <span class="o">|</span><span class="n">n</span><span class="o">|</span>
+    <span class="n">user</span><span class="o">.</span><span class="n">links</span><span class="o">.</span><span class="n">create!</span><span class="p">(</span>
+      <span class="n">short_url</span><span class="p">:</span> <span class="no">Link</span><span class="o">.</span><span class="n">generate_short_link</span><span class="p">,</span> 
+      <span class="n">long_url</span><span class="p">:</span> <span class="s2">"http://"</span> <span class="o">+</span> <span class="ss">Faker</span><span class="p">:</span><span class="ss">:Internet</span><span class="o">.</span><span class="n">domain_name</span><span class="p">,</span> 
+      <span class="n">total_clicks</span><span class="p">:</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">15</span><span class="p">),</span>
+      <span class="n">last_visited</span><span class="p">:</span> <span class="nb">rand</span><span class="p">(</span><span class="mi">0</span><span class="o">.</span><span class="n">.</span><span class="mi">365</span><span class="p">)</span><span class="o">.</span><span class="n">days</span><span class="o">.</span><span class="n">ago</span>
+    <span class="p">)</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</pre></div>
+
+<p>Afterwards, you can add the sample data to the database by running the following command:</p>
+
+<div class="highlight"><pre>rake db:populate
+</pre></div>
+
+<h2>
+<a name="running-the-test-suite" class="anchor" href="#running-the-test-suite"><span class="octicon octicon-link"></span></a>Running the Test Suite</h2>
+
+<p>The tests are built using the <a href="http://rspec.info/">RSpec</a> testing framework and can be run by issuing the following commands from the project root:</p>
+
+<div class="highlight"><pre><span class="c"># Prepare the database for testing</span>
+rake db:test:prepare
+
+<span class="c"># Run the tests</span>
+rspec spec/
+</pre></div>
+
+<h2>
+<a name="to-do" class="anchor" href="#to-do"><span class="octicon octicon-link"></span></a>To-Do</h2>
+
+<ul>
+<li>Upgrade project to Rails 4.0.</li>
+<li>Add link editing.</li>
+<li>Create logo.</li>
+<li>Add more features.</li>
+</ul><h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>Please feel free to contribute to the application by following the steps below:</p>
+
+<ol>
+<li>Fork it</li>
+<li>Create your feature branch (<code>git checkout -b my-new-feature</code>)</li>
+<li>Commit your changes (<code>git commit -am 'Add some feature'</code>)</li>
+<li>Push to the branch (<code>git push origin my-new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ol>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
