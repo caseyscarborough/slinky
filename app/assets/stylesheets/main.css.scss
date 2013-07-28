@@ -15,18 +15,10 @@ html {
 
 body {
   background: url('/assets/bg.png') repeat;
-  // background: #fcfcfc; /* Old browsers */
-  // background: -moz-radial-gradient(center, ellipse cover,  #fcfcfc 0%, #eaeaea 63%, #e0e0e0 100%); /* FF3.6+ */
-  // background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,#fcfcfc), color-stop(63%,#eaeaea), color-stop(100%,#e0e0e0)); /* Chrome,Safari4+ */
-  // background: -webkit-radial-gradient(center, ellipse cover,  #fcfcfc 0%,#eaeaea 63%,#e0e0e0 100%); /* Chrome10+,Safari5.1+ */
-  // background: -o-radial-gradient(center, ellipse cover,  #fcfcfc 0%,#eaeaea 63%,#e0e0e0 100%); /* Opera 12+ */
-  // background: -ms-radial-gradient(center, ellipse cover,  #fcfcfc 0%,#eaeaea 63%,#e0e0e0 100%); /* IE10+ */
-  // background: radial-gradient(ellipse at center,  #fcfcfc 0%,#eaeaea 63%,#e0e0e0 100%); /* W3C */
-  // filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcfcfc', endColorstr='#e0e0e0',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-
   height: 100%;
   font-family: 'Lato', sans-serif;
   font-size: 16px;
+  -webkit-font-smoothing: antialiased;
 }
 
 h1 {
@@ -46,6 +38,7 @@ h3 {
   padding: 50px 20px;
   margin: -20px 0 20px -20px;
   text-align: center;
+  font-size: 120%;
   //border-bottom: 2px solid #ddd;
   h1 {
     font-size: 60px;
@@ -68,7 +61,7 @@ a, a:visited {
 
 a:hover {
   text-decoration: none;
-  color: #003597;
+  color: darken($btn-default, 10%);
 }
 
 #wrapper {
@@ -90,6 +83,7 @@ a:hover {
   }
 }
 
+
 .dashboard {
   min-height: 300px;
 }
@@ -105,7 +99,13 @@ a:hover {
   margin-top: 35px;
   width: 300px;
   font-size: 28px;
-  line-height: 42px ;
+  line-height: 42px;
+  transition: all 0.5s ease-in-out;
+}
+
+#try-input:focus {
+  box-shadow: 0px 0px 15px #999;
+  border: 1px solid #aaa;
 }
 
 #try-button {
@@ -207,10 +207,10 @@ a:hover {
 
 .footer {
   text-align: right;
-  border-top: 1px solid #999;
-  width: 100%;
+  border-top: 3px solid #ccc;
+  width: 90%;
   color: #333;
-  margin: 0 auto -41px -20px;
+  margin: 0 auto -41px;
   padding: 10px 20px;
 }
 
@@ -251,6 +251,22 @@ div .field_with_errors {
     padding: 0;
     margin-bottom: 30px;
   }
+
+  input[type=text],
+  input[type=password],
+  input[type=email] {
+    border-radius: 0px;
+    -webkit-transition: all 0.30s ease-in-out;
+    transition: all 0.30s ease-in-out;
+  }
+
+  input[type=text]:focus,
+  input[type=password]:focus,
+  input[type=email]:focus {
+    box-shadow: 0 0 8px #ccc;
+    -webkit-box-shadow: 0 0 8px #ccc;
+    border: 1px solid #aaa;
+  }
 }
 
 label.error {
@@ -273,6 +289,7 @@ label.error {
 a.btn {
   color: white;
 }
+
 .btn-default {
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
@@ -291,7 +308,7 @@ a.btn {
 }
 
 .btn-default:hover {
-  background: $btn-default;
+  background: darken($btn-default, 5%);
   color: #fff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
 }
