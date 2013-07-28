@@ -2,7 +2,9 @@
 
 Slinky is a URL Shortener web application written using Ruby 2.0 and Rails 3.2.13.
 
-The application can be used and seen at [http://slnky.me/](http://slnky.me).
+The application can be used and seen at [http://slnky.me/](http://slnky.me). The following is a screen capture of the application's homepage in it's current state.
+
+![alt text][screenshot]
 
 # Dependencies
 
@@ -94,3 +96,6 @@ Please feel free to contribute to the application by following the steps below:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create new Pull Request
+
+
+[screenshot]: https://github.com/caseyscarborough/slinky/raw/master/app/assets/images/homepage.png "The application's main layout."
