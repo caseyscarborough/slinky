@@ -21,3 +21,4 @@ pickle-email-*.html
 /Capfile
 /config/deploy.rb
 /doc
+/resources

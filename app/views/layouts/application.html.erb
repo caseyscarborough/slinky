@@ -14,9 +14,11 @@
 <body>
   <div id="wrapper">
     <%= render 'layouts/header' %>
-    <%= render 'layouts/messages' %>
-    <%= yield %><br /><br />
-    <%= render 'layouts/debug_params' %><br /><br />
+    <div id="content">
+      <%= render 'layouts/messages' %>
+      <%= yield %><br /><br />
+      <%= render 'layouts/debug_params' %><br /><br />
+    </div>
   </div>
   <%= render 'layouts/footer' %>
 </body>

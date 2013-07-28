@@ -1,26 +1,35 @@
 <% provide(:title, 'Welcome') %>
 <div class="container-fluid">
   <div class="row-fluid masthead">
-    <h1>Welcome to Slinky!</h1><br />
-    <p>Slinky is a web-application used to create short URLs and to save them for later use.</p>
-    <p>Paste or type a URL below to try it out!</p>
-    <%= form_for @link, :html => { :id => "try-it-out-form" } do |f| %>
-      <div class="input-append">
-       <%= image_tag "/assets/arrow.png", :id => "arrow" %>
-        <%= f.text_field :long_url, :placeholder => "http://",
-              :id => "try-input", :name => "try-input" %>
-        <%= f.button "Create", :class => "btn btn-large btn-default",
-              :id => "try-button", :name => "try-button", :onclick => "return false;" %>
-      </div>
-    <% end %>
-    <div id="message" style="display:none"></div>
+    <div class="span1 hidden-phone"></div>
+    <div class="span10">
+      <h1>Welcome to Slinky!</h1><br />
+      <p>Slinky is a web-application used to create short URLs and to save them for later use.</p>
+      <p>Paste or type a URL below to try it out!</p>
+      <%= form_for @link, :html => { :id => "try-it-out-form" } do |f| %>
+        <div class="input-append">
+         <%= image_tag "/assets/arrow.png", :id => "arrow" %>
+          <%= f.text_field :long_url, :placeholder => "http://",
+                :id => "try-input", :name => "try-input" %>
+          <%= f.button "Create", :class => "btn btn-large btn-default",
+                :id => "try-button", :name => "try-button", :onclick => "return false;" %>
+        </div>
+      <% end %>
+      <div id="message" style="display:none"></div>
+    </div>
   </div>
 </div>
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span2 hidden-phone"></div>
-    <div class="span8 center">
+    <div class="span1 hidden-phone"></div>
+    <div class="span5">
+      <%= image_tag "/assets/showcase.png", class: 'showcase', width: '600' %>
+    </div>
+    <div class="span5 center">
       <h4 style="padding:10px;">Create an account or login to start keeping track of your links!</h4>
+      <p>Signing up for an account gives you access to the dashboard, where you can create, edit, and
+      manage all of your links from an easy to use interface. The dashboard also has a mobile layout
+      for easy access to your dashboard on the go.</p>
       <%= link_to "Sign up now!", signup_path, {:class => 'btn btn-default btn-large', :id => "signup-button"} %>
       <%= link_to "Login", login_path, {:class => 'btn btn-inverse btn-large', :id => "login-button"} %>
     </div>
@@ -28,17 +37,25 @@
 </div><br /><br /><br />
 <div class="container-fluid">
   <div class="row-fluid">
-    <div class="span2 hidden-phone"></div>
-    <div style="padding:10px;" class="span4">
-      <h3><i style="margin: 10px 10px 0 0;" class="icon-folder-open"></i>Condense long links</h3>
-      <p class="justified">Shortening long links by creating a short URL allows you to
-      remember the link easier, fit the link in a shorter space (such
-      as a Twitter post), and to create a link with a format that looks cleaner.</p>
-    </div>
-    <div style="padding:10px;" class="span4">
-      <h3><i style="margin: 10px 10px 0 0;" class="icon-bookmark"></i>Keep track of important URLs</h3>
-      <p class="justified">Slinky doubles as a place to store important URLs, such as your
-      personal webpage or frequently visited webpages and downloaded files</p>
+    <div class="span1 hidden-phone"></div>
+    <div class="span10">
+      <div style="padding:10px;" class="span4">
+        <h3><i style="margin: 10px 10px 0 0;" class="icon-folder-open"></i>Condense long links</h3>
+        <p class="justified">Shortening long links by creating a short URL allows you to
+        remember the link easier, fit the link in a shorter space (such
+        as a Twitter post), and to create a link with a format that looks cleaner.</p>
+      </div>
+      <div style="padding:10px;" class="span4">
+        <h3><i style="margin: 10px 10px 0 0;" class="icon-bookmark"></i>Organize important URLs</h3>
+        <p class="justified">Slinky doubles as a place to store important URLs, such as your
+        personal webpage or frequently visited webpages and downloaded files</p>
+      </div>
+      <div style="padding:10px;" class="span4">
+        <h3><i style="margin: 10px 10px 0 0;" class="icon-tasks"></i>Count your clicks</h3>
+        <p class="justified">By creating an account you are able to keep track of the amount of
+        clicks a link has received. This is particularly useful for knowing how popular a link is
+        becoming.</p>
+      </div>
     </div>
   </div>
 </div>

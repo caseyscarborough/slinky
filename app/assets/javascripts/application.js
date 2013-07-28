@@ -52,8 +52,8 @@ $(document).ready(function() {
                     alert("Something is messed up");
                 },
                 success: function(data) {
-                    $('#message').html(
-                        "<h3>Success! View your short link below:</h3><br />" +
+                    $('#message').fadeIn(400).html(
+                        "<h3>Success! View your short link below:</h3>" +
                             "<a id ='slnky-link' href='/" + data.short_url +
                             "' target='_blank'><h3 id='slnky-link-text'>slnky.me/" +
                             data.short_url + "</h3></a>" +
@@ -73,8 +73,7 @@ $(document).ready(function() {
             });
         } else {
             $('#message').html(
-                "<h3>Oops, something's wrong with that URL.</h3>" +
-                "<small>If you think this is incorrect, please let us know.</small>"
+                "<h3>Oops, something's wrong with that URL.</h3>"
              );
             $('#message').fadeIn(400);
         }

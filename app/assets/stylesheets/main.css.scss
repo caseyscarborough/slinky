@@ -72,6 +72,11 @@ a:hover {
   margin: 0 auto -41px;
 }
 
+#content {
+  max-width: 2000px;
+  margin: 0 auto;
+}
+
 .main {
   text-align: center;
   background: white;
@@ -164,6 +169,7 @@ a:hover {
 .navbar .nav > li > a {
   color: #fff;
   text-shadow: 0px 1px 3px #000;
+  transition: all 0.3s ease-in-out;
   &:hover {
     color: $btn-default;
   }
@@ -191,6 +197,7 @@ a:hover {
   font-weight: normal;
   color: #eee;
   text-shadow: 0px 1px 2px #000;
+  transition: all 0.3s ease-in-out;
 }
 
 .sidebar {
@@ -256,8 +263,8 @@ div .field_with_errors {
   input[type=password],
   input[type=email] {
     border-radius: 0px;
-    -webkit-transition: all 0.30s ease-in-out;
-    transition: all 0.30s ease-in-out;
+    -webkit-transition: box-shadow 0.30s ease-in-out, border 0.3s ease-in-out;
+    transition: box-shadow 0.30s ease-in-out, border 0.3s ease-in-out;
   }
 
   input[type=text]:focus,
